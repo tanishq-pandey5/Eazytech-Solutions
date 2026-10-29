@@ -1,0 +1,90 @@
+{
+  "enquiries": [
+    {
+      "fullName": "Siddharth Rao",
+      "businessEmail": "s.rao@apexdatacenters.in",
+      "companyName": "Apex Data Systems Ltd",
+      "phoneNumber": "+91 98200 12345",
+      "serviceRequired": "UPS & Battery Supply",
+      "siteLocation": "Noida Sector 62",
+      "equipmentModel": "200 kVA Modular Scalable UPS",
+      "requirementDescription": "Planning N+1 redundant power supply expansion for tier-3 server hall with 30 min full load backup.",
+      "consent": true,
+      "sourceIp": "::1",
+      "id": "ETS-2026-8098",
+      "createdAt": "2026-10-29T13:16:32.929Z",
+      "updatedAt": "2026-10-29T13:16:32.960Z",
+      "status": "REVIEWING",
+      "notes": [
+        {
+          "date": "2026-10-29T13:16:32.960Z",
+          "author": "Senior Power Consultant",
+          "text": "Preliminary load sizing calculations completed. Scheduled engineering callback."
+        }
+      ],
+      "emailStatus": "QUEUED_LOCAL"
+    },
+    {
+      "id": "ETS-2026-1001",
+      "createdAt": "2026-10-27T13:15:28.081Z",
+      "updatedAt": "2026-10-27T13:15:28.087Z",
+      "fullName": "Vikram Malhotra",
+      "businessEmail": "v.malhotra@cloudcorp.in",
+      "companyName": "CloudCorp Data Systems",
+      "phoneNumber": "+91 98112 34567",
+      "serviceRequired": "Maintenance Contracts (AMC & CAMC)",
+      "siteLocation": "Sector 62, Noida",
+      "equipmentModel": "2x 160kVA Riello Master HP Online UPS",
+      "requirementDescription": "Seeking comprehensive CAMC contract including OEM spare parts and quarterly thermal imaging inspections for primary server hall.",
+      "consent": true,
+      "status": "REVIEWING",
+      "notes": [
+        {
+          "date": "2026-10-28T13:15:28.087Z",
+          "author": "Engineering Lead",
+          "text": "Site survey scheduled for Friday. Requested Single Line Diagram (SLD) from facility manager."
+        }
+      ],
+      "emailStatus": "SENT",
+      "sourceIp": "127.0.0.1"
+    },
+    {
+      "id": "ETS-2026-1002",
+      "createdAt": "2026-10-28T13:15:28.087Z",
+      "updatedAt": "2026-10-28T13:15:28.087Z",
+      "fullName": "Dr. Anita Desai",
+      "businessEmail": "a.desai@metrolifehealth.org",
+      "companyName": "MetroLife Healthcare Center",
+      "phoneNumber": "+91 99201 88765",
+      "serviceRequired": "Battery Impedance & Capacity Testing",
+      "siteLocation": "Patparganj, Delhi",
+      "equipmentModel": "64x 12V 150Ah SMF VRLA Battery Bank",
+      "requirementDescription": "Annual IEEE 1188 cell-level impedance measurement and timed discharge testing required for ICU and surgical emergency backup bank.",
+      "consent": true,
+      "status": "NEW",
+      "notes": [],
+      "emailStatus": "SENT",
+      "sourceIp": "127.0.0.1"
+    }
+  ],
+  "resourceRequests": [
+    {
+      "id": "REQ-92963",
+      "createdAt": "2026-10-29T13:16:32.963Z",
+      "resourceTitle": "Netman 204 SNMP MIB & Architecture Spec",
+      "businessEmail": "s.rao@apexdatacenters.in",
+      "fullName": "Siddharth Rao"
+    },
+    {
+      "id": "REQ-1001",
+      "createdAt": "2026-10-29T08:15:28.087Z",
+      "resourceTitle": "Netman 204 SNMP MIB & Architecture Spec",
+      "businessEmail": "techlead@noidadatacenter.com",
+      "fullName": "Amit Saxena"
+    }
+  ],
+  "settings": {
+    "lastUpdated": "2026-10-29T13:16:32.963Z",
+    "version": "1.0.0"
+  }
+}
