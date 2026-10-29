@@ -28,6 +28,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local raw references folder
+Refrences/
+
 # local outbox log
 data/outbox.log
 
