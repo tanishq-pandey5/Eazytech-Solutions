@@ -63,7 +63,7 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
           <span
             className={`font-semibold uppercase text-brand-cyan/85 mt-1 leading-none ${subtitleSizes[size]}`}
           >
-            END-TO-END CRITICAL POWER INFRASTRUCTURE
+            END-TO-END CRITICAL POWER SERVICE PROVIDER
           </span>
         )}
       </div>

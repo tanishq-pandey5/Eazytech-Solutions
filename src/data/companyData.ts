@@ -1,5 +1,6 @@
-export interface ServiceItem {
+export interface OfferingItem {
   id: string;
+  category: 'product' | 'service';
   title: string;
   shortTitle: string;
   shortDescription: string;
@@ -8,9 +9,11 @@ export interface ServiceItem {
   deliverables: string[];
   icon: string;
   image: string;
-  standards?: string;
   tag: string;
+  standards?: string;
 }
+
+export type ServiceItem = OfferingItem;
 
 export interface IndustryItem {
   id: string;
@@ -32,19 +35,13 @@ export interface ProcessStep {
   icon: string;
 }
 
-export interface MetricData {
-  label: string;
-  value: string;
-  subtext: string;
-}
-
 export const COMPANY_DETAILS = {
   name: "Eazy Tech Solutions",
   legalName: "EAZY TECH SOLUTIONS",
-  tagline: "End-to-End Critical Power Infrastructure",
+  tagline: "End-to-End Critical Power Service Provider",
   positioning: "Sales • Service • Testing • Electrical Consultancy",
   brochureMission:
-    "Engineering end-to-end reliability for mission-critical electrical environments. From precision battery diagnostics to advanced SNMP telemetry, we protect uptime where power failure is not an option.",
+    "Your trusted partner for reliable power solutions, delivering UPS systems, battery solutions, power audits, maintenance, testing, and technical consultancy to keep your operations running without interruption.",
   gstin: "09FALPP6353P1ZN",
   stateJurisdiction: "Uttar Pradesh (09)",
   contactEmail: "eazytechsolutions@hotmail.com",
@@ -95,32 +92,211 @@ export const CORE_CAPABILITIES = [
   },
 ];
 
-export const CORE_SERVICES: ServiceItem[] = [
+/**
+ * Confirmed Products (6)
+ */
+export const PRODUCTS_LIST: OfferingItem[] = [
   {
-    id: "ups-battery-supply",
-    title: "UPS & Battery Supply",
-    shortTitle: "UPS & Battery Supply",
-    shortDescription: "Supply and commissioning of online UPS systems, industrial batteries and power protection solutions.",
+    id: "ups-systems",
+    category: "product",
+    title: "UPS Systems",
+    shortTitle: "UPS Systems",
+    shortDescription: "Supply and solutions for Uninterruptible Power Supply systems.",
     fullDescription:
-      "Engineered supply and commissioning of high-efficiency Online Double Conversion UPS systems and industrial energy storage. We calculate exact runtime requirements and match scalable architectures to your facility's critical electrical load profile.",
+      "High-efficiency Online Double Conversion UPS systems and modular scalable power architectures. We calculate exact runtime requirements and deliver load-matched, zero-break power protection for data centers, industrial plants, and critical IT environments.",
     scope:
-      "Supply of Online Double Conversion UPS systems, modular scalable architectures, industrial SMF VRLA, Tubular, and LiFePO4 battery banks.",
+      "Supply of Online Double Conversion UPS systems (10 kVA to 500+ kVA), scalable modular architectures, single-phase and three-phase industrial units.",
     deliverables: [
-      "OEM warranty-backed equipment supply",
+      "OEM warranty-backed UPS equipment supply",
       "Load-matched runtime and sizing calculations",
-      "Safe on-site rig-in and mechanical installation",
-      "Pre-commissioning electrical verification",
+      "Safe on-site mechanical placement & cabling",
+      "Pre-commissioning electrical verification & testing",
     ],
-    icon: "Box",
+    icon: "Zap",
     image: "/images/service-ups-hd.jpg",
-    tag: "Equipment Supply & Commissioning",
+    tag: "Power Backup Hardware",
     standards: "OEM Certified Standards",
   },
   {
-    id: "maintenance-contracts",
-    title: "Maintenance Contracts (AMC & CAMC)",
-    shortTitle: "Maintenance Contracts (AMC & CAMC)",
-    shortDescription: "Preventive maintenance and comprehensive support to ensure maximum uptime.",
+    id: "batteries",
+    category: "product",
+    title: "Batteries",
+    shortTitle: "Batteries",
+    shortDescription: "Battery supply and solutions for critical power backup applications.",
+    fullDescription:
+      "Engineered battery supply and energy storage solutions for mission-critical backup autonomy. We supply high-rate discharge industrial batteries designed for high cyclic endurance and reliable power delivery during grid interruptions.",
+    scope:
+      "Supply of industrial Sealed Maintenance Free (SMF) VRLA batteries, high-durability Tubular batteries, and advanced Lithium Iron Phosphate (LiFePO4) storage banks.",
+    deliverables: [
+      "Fresh batch cell delivery with OEM warranty",
+      "Precision string sizing and ampere-hour (Ah) matching",
+      "Heavy-duty tier rack supply and mounting",
+      "Post-installation float voltage and impedance baseline check",
+    ],
+    icon: "BatteryCharging",
+    image: "/images/service-battery-testing-hd.jpg",
+    tag: "Energy Storage",
+    standards: "IEEE & OEM Battery Standards",
+  },
+  {
+    id: "dc-cables",
+    category: "product",
+    title: "DC Cables",
+    shortTitle: "DC Cables",
+    shortDescription: "DC power cable solutions.",
+    fullDescription:
+      "Heavy-duty flexible DC power cables engineered specifically for low voltage-drop connections between industrial battery banks and UPS inverter rectifiers.",
+    scope:
+      "High-amperage, double-insulated flexible copper DC cables with flame-retardant outer sheathing rated for high DC current draws and continuous duty.",
+    deliverables: [
+      "99.9% electrolytic grade high-conductivity copper conductors",
+      "Flame-retardant, heat-resistant insulation",
+      "Precision factory-crimped terminal lugs with heat-shrink boots",
+      "Voltage-drop calculation and cross-section validation",
+    ],
+    icon: "Layers",
+    image: "/images/product-dc-cables-hd.jpg",
+    tag: "Power Distribution",
+    standards: "IS & IEC Power Cable Standards",
+  },
+  {
+    id: "uninyvin-cables",
+    category: "product",
+    title: "Uninyvin Cables",
+    shortTitle: "Uninyvin Cables",
+    shortDescription: "Specialized Uninyvin cable solutions.",
+    fullDescription:
+      "Specialized high-temperature and chemical-resistant Uninyvin power cables designed for harsh industrial, aircraft ground power, and demanding critical backup installations.",
+    scope:
+      "Supply of specialized Uninyvin cables with composite heat-resistant nylon and vinyl insulation, offering extreme durability against oils, fuels, and thermal stress.",
+    deliverables: [
+      "High thermal endurance (-50°C to +105°C operating range)",
+      "High dielectric insulation strength and abrasion resistance",
+      "Pre-cut custom run lengths with certified end terminations",
+      "Industrial compliance documentation",
+    ],
+    icon: "ShieldAlert",
+    image: "/images/product-uninyvin-cables-hd.jpg",
+    tag: "Specialized Cables",
+    standards: "Def-Stan & Industrial Specifications",
+  },
+  {
+    id: "miracle-cables",
+    category: "product",
+    title: "Miracle Cables",
+    shortTitle: "Miracle Cables",
+    shortDescription: "Miracle cable products and solutions.",
+    fullDescription:
+      "Premium Miracle ultra-flexible multi-strand power cables engineered for maximum current-carrying efficiency and effortless routing in compact electrical enclosures and battery cabinets.",
+    scope:
+      "Supply of high-flexibility Miracle multi-strand cables with tinned copper conductors, minimal electrical resistance, and superior thermal dissipation properties.",
+    deliverables: [
+      "High-purity tinned copper strands for maximum corrosion resistance",
+      "Ultra-high flexibility for tight-bend-radius routing",
+      "Reduced I²R resistance losses under high continuous load",
+      "Ready-to-install custom harness configurations",
+    ],
+    icon: "Sparkles",
+    image: "/images/product-miracle-cables-hd.jpg",
+    tag: "Flexible Power Cables",
+    standards: "High-Conductivity Standards",
+  },
+  {
+    id: "battery-link-sets",
+    category: "product",
+    title: "Battery Link Sets",
+    shortTitle: "Battery Link Sets",
+    shortDescription: "Battery interconnection and linking solutions.",
+    fullDescription:
+      "Precision-machined copper busbar link sets and flexible inter-cell linking connectors for stationary battery strings, ensuring low-resistance connectivity across all battery cells.",
+    scope:
+      "Solid electrolytic copper busbars, flexible laminated copper links, and insulated interconnection cables with protective touch-safe terminal covers.",
+    deliverables: [
+      "Electro-tin plated copper links for anti-oxidation protection",
+      "Color-coded touch-proof insulating shroud covers (Red/Black)",
+      "Uniform contact resistance across all series and parallel tiers",
+      "Torque-specified terminal hardware sets",
+    ],
+    icon: "Boxes",
+    image: "/images/product-battery-links-hd.jpg",
+    tag: "Interconnection Accessories",
+    standards: "IEEE 1188 Hardware Compliance",
+  },
+];
+
+/**
+ * Confirmed Services (6)
+ */
+export const SERVICES_LIST: OfferingItem[] = [
+  {
+    id: "power-audit",
+    category: "service",
+    title: "Power Audit",
+    shortTitle: "Power Audit",
+    shortDescription: "Assessment and evaluation of existing power infrastructure.",
+    fullDescription:
+      "Comprehensive diagnostic evaluation of your facility's electrical power quality. Using calibrated Class-A power analyzers, we detect hidden anomalies, harmonic distortion, and phase imbalances before they damage sensitive equipment.",
+    scope:
+      "On-site power quality logging recording THD-V, THD-I, neutral currents, voltage sags/swells, transient events, and power factor irregularities.",
+    deliverables: [
+      "Class-A harmonic distortion audit report (up to 50th order)",
+      "Neutral-to-ground voltage and circulating neutral current study",
+      "Waveform captures during inductive switching & transfer tests",
+      "Harmonic mitigation schematics and active filter recommendations",
+    ],
+    icon: "Activity",
+    image: "/images/service-power-quality-hd.jpg",
+    tag: "Diagnostic Audit",
+    standards: "Class-A Power Quality Standards",
+  },
+  {
+    id: "load-study",
+    category: "service",
+    title: "Load Study",
+    shortTitle: "Load Study",
+    shortDescription: "Analysis of electrical loads and power requirements.",
+    fullDescription:
+      "In-depth analysis of critical electrical loads, inrush profiles, and capacity demands to prevent breaker trips, optimize sizing, and balance three-phase distributions.",
+    scope:
+      "Detailed electrical load profiling across peak, nominal, and standby operational states, monitoring kVA, kW, and power factor demands.",
+    deliverables: [
+      "Phase-by-phase load balance analysis and balance recommendations",
+      "Peak inrush current and motor startup step-loading analysis",
+      "Feeder capacity utilization and thermal headroom assessment",
+      "Future load expansion margin and sizing recommendations",
+    ],
+    icon: "FileCheck",
+    image: "/images/service-consultancy.png",
+    tag: "Engineering Analysis",
+    standards: "National Electrical Code Guidelines",
+  },
+  {
+    id: "battery-impedance-testing",
+    category: "service",
+    title: "Battery Impedance Testing",
+    shortTitle: "Battery Impedance Testing",
+    shortDescription: "Testing and evaluation of battery health and performance.",
+    fullDescription:
+      "Cell-level scientific condition assessment of stationary battery systems. Internal cell impedance and conductance testing identifies deteriorating cells and sulfation long before an entire string fails under actual mains loss.",
+    scope:
+      "Individual cell internal impedance, conductance measurement, inter-tier connection resistance, and timed DC load-bank discharge testing.",
+    deliverables: [
+      "Cell-by-cell micro-ohm internal resistance logs",
+      "Inter-cell connector torque and resistance verification",
+      "Constant-current DC load bank discharge curve validation",
+      "Compliance certification under IEEE 1188 recommended practices",
+    ],
+    icon: "BatteryCharging",
+    image: "/images/service-battery-testing-hd.jpg",
+    tag: "Condition Monitoring",
+    standards: "IEEE 1188 Recommended Practices",
+  },
+  {
+    id: "ups-amc",
+    category: "service",
+    title: "UPS AMC (Annual Maintenance Contract)",
+    shortTitle: "UPS AMC",
+    shortDescription: "Preventive maintenance and ongoing UPS support.",
     fullDescription:
       "Structured service level agreements designed to catch deteriorating components before they threaten operational uptime. Rather than waiting for catastrophic failure during mains loss, we deliver predictive condition monitoring.",
     scope:
@@ -137,14 +313,15 @@ export const CORE_SERVICES: ServiceItem[] = [
     standards: "ISO & OEM Maintenance Protocols",
   },
   {
-    id: "emergency-repair",
-    title: "Emergency Breakdown & Repair",
-    shortTitle: "Emergency Breakdown & Repair",
-    shortDescription: "24/7 rapid response for UPS failures, inverter faults and critical power issues.",
+    id: "ups-repair",
+    category: "service",
+    title: "UPS Repair",
+    shortTitle: "UPS Repair",
+    shortDescription: "UPS troubleshooting, diagnostics, and repair services.",
     fullDescription:
-      "Round-the-clock technical response when critical power systems fail. Our certified engineers carry calibrated diagnostic instruments to rapidly isolate inverter faults, rectifier issues, static switch failures, and blown DC fuses.",
+      "Round-the-clock technical response and component-level repair for critical power failures. Our certified engineers rapidly isolate inverter faults, rectifier issues, static switch failures, and blown DC fuses.",
     scope:
-      "24/7 on-call rapid response team for critical power failures, inverter faults, static bypass failures, and component-level board repairs.",
+      "24/7 rapid response for critical power failures, inverter faults, static bypass failures, and component-level board repairs.",
     deliverables: [
       "Rapid on-site triage and emergency stabilization",
       "Calibrated fault diagnosis and component replacement",
@@ -153,36 +330,17 @@ export const CORE_SERVICES: ServiceItem[] = [
     ],
     icon: "ShieldAlert",
     image: "/images/service-emergency.png",
-    tag: "24/7 Emergency Support",
+    tag: "24/7 Breakdown Response",
     standards: "Rapid SLA Response",
   },
   {
-    id: "power-quality-audits",
-    title: "Power Quality & Energy Audits",
-    shortTitle: "Power Quality Audits",
-    shortDescription: "Detailed analysis of voltage sags, harmonics, THD and power factor irregularities.",
+    id: "power-consultancy",
+    category: "service",
+    title: "Power Consultancy",
+    shortTitle: "Power Consultancy",
+    shortDescription: "Professional technical guidance and consultancy for critical power requirements.",
     fullDescription:
-      "Comprehensive electrical power profiling using calibrated Class-A power quality analyzers. We uncover invisible power anomalies that overheat transformers, trip sensitive electronics, and inflate utility billing.",
-    scope:
-      "Class-A power quality analyzers recording THD-V, THD-I, neutral currents, voltage sags/swells, transient surges, and power factor irregularities.",
-    deliverables: [
-      "Full spectrum harmonic distortion profiling (up to 50th order)",
-      "Neutral-to-ground voltage and circulating neutral current study",
-      "Waveform capture during heavy inductive load switching",
-      "Engineering harmonic mitigation and active filter recommendations",
-    ],
-    icon: "Activity",
-    image: "/images/service-power-quality-hd.jpg",
-    tag: "Diagnostic Electrical Testing",
-    standards: "Class-A Analyzer Compliant",
-  },
-  {
-    id: "power-backup-consultancy",
-    title: "Power Backup Consultancy",
-    shortTitle: "Power Backup Consultancy",
-    shortDescription: "Electrical design, SLD optimization, load segregation and generator-UPS coordination.",
-    fullDescription:
-      "Expert engineering advisory for industrial power distribution and backup resilience. We review your Single Line Diagrams (SLD), coordinate automatic transfer switches (ATS) with standby diesel gensets, and eliminate single points of failure.",
+      "Expert engineering advisory for industrial power distribution and backup resilience. We review Single Line Diagrams (SLD), coordinate automatic transfer switches (ATS) with standby diesel gensets, and eliminate single points of failure.",
     scope:
       "Industrial electrical design, Single Line Diagram (SLD) optimization, electrical load segregation schemes, generator-UPS synchronization.",
     deliverables: [
@@ -193,30 +351,18 @@ export const CORE_SERVICES: ServiceItem[] = [
     ],
     icon: "FileText",
     image: "/images/service-consultancy.png",
-    tag: "Engineering Advisory",
+    tag: "Technical Advisory",
     standards: "National Electrical Code & IEEE Standards",
   },
-  {
-    id: "battery-testing",
-    title: "Battery Impedance & Capacity Testing",
-    shortTitle: "Battery Impedance & Capacity Testing",
-    shortDescription: "Cell-level testing, impedance measurement and discharge testing as per IEEE 1188.",
-    fullDescription:
-      "Cell-by-cell scientific health assessment of stationary battery systems. Internal cell impedance and conductance testing identifies sulfation, dry-out, and weak cells long before an entire battery string fails under actual load.",
-    scope:
-      "Individual cell internal impedance, conductance measurement, inter-tier connection resistance, and timed DC load-bank discharge testing.",
-    deliverables: [
-      "Cell-by-cell micro-ohm internal resistance logs",
-      "Inter-cell connector torque and resistance verification",
-      "Constant-current DC load bank discharge curve validation",
-      "Compliance certification under IEEE 1188 recommended practices",
-    ],
-    icon: "BatteryCharging",
-    image: "/images/service-battery-testing-hd.jpg",
-    tag: "Preventive Cell Diagnostics",
-    standards: "IEEE 1188 Recommended Practices",
-  },
 ];
+
+/**
+ * Combined list of all 12 confirmed offerings
+ */
+export const ALL_OFFERINGS: OfferingItem[] = [...PRODUCTS_LIST, ...SERVICES_LIST];
+
+// Backwards compatibility alias for services components
+export const CORE_SERVICES = ALL_OFFERINGS;
 
 export const MONITORING_WORKFLOW = [
   {

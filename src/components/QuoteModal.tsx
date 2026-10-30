@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, AlertCircle, Send, ShieldCheck, Mail, Phone, Loader2 } from 'lucide-react';
-import { COMPANY_DETAILS, CORE_SERVICES } from '@/data/companyData';
+import { COMPANY_DETAILS, PRODUCTS_LIST, SERVICES_LIST, ALL_OFFERINGS } from '@/data/companyData';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -38,7 +38,7 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
     businessEmail: '',
     companyName: '',
     phoneNumber: '',
-    serviceRequired: preselectedService || 'UPS & Battery Supply',
+    serviceRequired: preselectedService || 'UPS Systems',
     siteLocation: '',
     equipmentModel: '',
     requirementDescription: '',
@@ -137,7 +137,7 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
       businessEmail: '',
       companyName: '',
       phoneNumber: '',
-      serviceRequired: 'UPS & Battery Supply',
+      serviceRequired: 'UPS Systems',
       siteLocation: '',
       equipmentModel: '',
       requirementDescription: '',
@@ -353,17 +353,28 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                     onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
                   >
-                    {CORE_SERVICES.map((s) => (
-                      <option key={s.id} value={s.title}>
-                        {s.title}
+                    <optgroup label="Products & Solutions (Hardware)">
+                      {PRODUCTS_LIST.map((p) => (
+                        <option key={p.id} value={p.title}>
+                          {p.title}
+                        </option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Technical Services">
+                      {SERVICES_LIST.map((s) => (
+                        <option key={s.id} value={s.title}>
+                          {s.title}
+                        </option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Monitoring & Other Offerings">
+                      <option value="Smart SNMP Power Telemetry and Remote Monitoring">
+                        Smart SNMP Power Telemetry and Remote Monitoring (Netman 204)
                       </option>
-                    ))}
-                    <option value="Smart SNMP Power Telemetry and Remote Monitoring">
-                      Smart SNMP Power Telemetry and Remote Monitoring (Netman 204)
-                    </option>
-                    <option value="General Critical Power Assessment">
-                      General Critical Power Assessment
-                    </option>
+                      <option value="General Critical Power Assessment">
+                        General Critical Power Assessment
+                      </option>
+                    </optgroup>
                   </select>
                 </div>
 

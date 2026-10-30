@@ -10,18 +10,24 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'Eazy Tech Solutions | Critical Power Infrastructure',
+  title: 'Eazy Tech Solutions | End-to-End Critical Power Service Provider',
   description:
-    'End-to-End Critical Power Infrastructure. Sales, Service, Testing, and Electrical Consultancy for UPS systems, battery diagnostics, AMC/CAMC, power quality audits, and Netman 204 SNMP monitoring.',
+    'Your trusted partner for reliable power solutions, delivering UPS systems, battery solutions, power audits, maintenance, testing, and technical consultancy to keep your operations running without interruption.',
   keywords: [
-    'Critical Power Infrastructure',
+    'Critical Power Service Provider',
     'UPS Systems Supply',
-    'Industrial Battery Banks',
-    'UPS AMC CAMC Ghaziabad Noida Delhi',
+    'Industrial Batteries Backup',
+    'DC Power Cables',
+    'Uninyvin Cables',
+    'Miracle Cables',
+    'Battery Link Sets Busbars',
+    'Power Audit Class A',
+    'Electrical Load Study',
     'Battery Impedance Testing IEEE 1188',
-    'Power Quality Energy Audits THD',
-    'Netman 204 SNMP Card Configuration',
-    'Emergency Breakdown Repair UPS',
+    'UPS AMC CAMC Ghaziabad Noida Delhi',
+    'UPS Repair 24/7 Breakdown Response',
+    'Industrial Power Consultancy',
+    'Netman 204 SNMP Remote Monitoring',
     'Eazy Tech Solutions',
   ],
   authors: [{ name: 'Eazy Tech Solutions' }],
@@ -30,9 +36,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Eazy Tech Solutions | End-to-End Critical Power Infrastructure',
+    title: 'Eazy Tech Solutions | End-to-End Critical Power Service Provider',
     description:
-      'Powering the infrastructure that powers your business. Online double-conversion UPS, preventive maintenance, IEEE 1188 diagnostics, and smart SNMP telemetry.',
+      'Your trusted partner for reliable power solutions, delivering UPS systems, battery solutions, power audits, maintenance, testing, and technical consultancy to keep your operations running without interruption.',
     url: 'https://eazytechsolutions.com',
     siteName: 'Eazy Tech Solutions',
     locale: 'en_IN',
@@ -42,15 +48,15 @@ export const metadata: Metadata = {
         url: '/images/hero-datacenter-hd.jpg',
         width: 1200,
         height: 630,
-        alt: 'Eazy Tech Solutions Critical Power Infrastructure Data Center',
+        alt: 'Eazy Tech Solutions End-to-End Critical Power Service Provider',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Eazy Tech Solutions | Critical Power Infrastructure',
+    title: 'Eazy Tech Solutions | End-to-End Critical Power Service Provider',
     description:
-      'Industrial UPS systems, battery impedance testing, AMC/CAMC contracts, and Netman 204 SNMP monitoring.',
+      'Industrial UPS systems, battery solutions, specialized power cables, power audits, load studies, battery impedance testing, UPS AMC, repairs, and power consultancy.',
     images: ['/images/hero-datacenter-hd.jpg'],
   },
   icons: {
@@ -87,48 +93,104 @@ export default function RootLayout({
     areaServed: 'India',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Critical Power Infrastructure Services',
+      name: 'Critical Power Products and Technical Services',
       itemListElement: [
+        // Products (6)
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'UPS Systems',
+            description: 'Supply and solutions for Uninterruptible Power Supply systems.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Batteries',
+            description: 'Battery supply and solutions for critical power backup applications.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'DC Cables',
+            description: 'DC power cable solutions.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Uninyvin Cables',
+            description: 'Specialized Uninyvin cable solutions.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Miracle Cables',
+            description: 'Miracle cable products and solutions.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Product',
+            name: 'Battery Link Sets',
+            description: 'Battery interconnection and linking solutions.',
+          },
+        },
+        // Services (6)
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'UPS and Battery Sales & Supply',
+            name: 'Power Audit',
+            description: 'Assessment and evaluation of existing power infrastructure.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Annual Maintenance Contracts (AMC & CAMC)',
+            name: 'Load Study',
+            description: 'Analysis of electrical loads and power requirements.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Emergency Breakdown & Repair Maintenance',
+            name: 'Battery Impedance Testing',
+            description: 'Testing and evaluation of battery health and performance.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Power Quality & Energy Audits',
+            name: 'UPS AMC (Annual Maintenance Contract)',
+            description: 'Preventive maintenance and ongoing UPS support.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Battery Impedance, Conductance & Capacity Testing',
+            name: 'UPS Repair',
+            description: 'UPS troubleshooting, diagnostics, and repair services.',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Smart SNMP Power Telemetry and Remote Monitoring',
+            name: 'Power Consultancy',
+            description: 'Professional technical guidance and consultancy for critical power requirements.',
           },
         },
       ],

@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, ArrowUp, ShieldCheck } from 'lucide-react';
 import { Logo } from './Logo';
-import { COMPANY_DETAILS, CORE_SERVICES } from '@/data/companyData';
+import { COMPANY_DETAILS, PRODUCTS_LIST, SERVICES_LIST } from '@/data/companyData';
 
 interface FooterProps {
   onOpenPrivacyModal: () => void;
@@ -27,13 +27,13 @@ export function Footer({
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-brand-border/40">
-          {/* Col 1: Brand & Positioning (4 cols) */}
-          <div className="lg:col-span-4 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-brand-border/40">
+          {/* Col 1: Brand & Positioning (3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
             <Logo size="md" showSubtitle={true} />
-            <p className="text-xs sm:text-sm text-brand-muted leading-relaxed max-w-sm pt-2">
-              Sales • Service • Testing • Electrical Consultancy for critical power infrastructure.
-              Delivering high-uptime engineering for mission-critical facilities across India.
+            <p className="text-xs sm:text-sm text-brand-muted leading-relaxed pt-2">
+              End-to-End Critical Power Service Provider. Delivering reliable UPS systems, battery
+              banks, industrial cables, power audits, maintenance, testing, and consultancy across India.
             </p>
             <div className="pt-2 text-xs text-brand-muted/80 font-mono">
               <span className="text-brand-cyan font-semibold">GSTIN:</span> {COMPANY_DETAILS.gstin}
@@ -44,10 +44,10 @@ export function Footer({
 
           {/* Col 2: Quick Links (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-sm font-bold text-brand-text tracking-wide uppercase font-mono">
-              Quick Links
+            <h4 className="text-xs font-bold text-brand-text tracking-wider uppercase font-mono">
+              Navigation
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-brand-muted">
+            <ul className="space-y-2 text-xs text-brand-muted">
               <li>
                 <Link href="#home" className="hover:text-brand-cyan transition-colors">
                   Home
@@ -60,34 +60,59 @@ export function Footer({
               </li>
               <li>
                 <Link href="#services" className="hover:text-brand-cyan transition-colors">
-                  Services
+                  Products & Services
                 </Link>
               </li>
               <li>
                 <Link href="#industries" className="hover:text-brand-cyan transition-colors">
-                  Industries
+                  Industries We Serve
                 </Link>
               </li>
               <li>
                 <Link href="#technology" className="hover:text-brand-cyan transition-colors">
-                  Technology (SNMP)
+                  Remote SNMP Telemetry
                 </Link>
               </li>
               <li>
                 <Link href="#how-we-work" className="hover:text-brand-cyan transition-colors">
-                  Methodology
+                  Service Methodology
+                </Link>
+              </li>
+              <li>
+                <Link href="#resources" className="hover:text-brand-cyan transition-colors">
+                  Technical Resources
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Our Services (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-brand-text tracking-wide uppercase font-mono">
-              Our Services
+          {/* Col 3: Products & Solutions (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-bold text-brand-text tracking-wider uppercase font-mono">
+              Products
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-brand-muted">
-              {CORE_SERVICES.map((s) => (
+            <ul className="space-y-2 text-xs text-brand-muted">
+              {PRODUCTS_LIST.map((p) => (
+                <li key={p.id}>
+                  <button
+                    type="button"
+                    onClick={() => onSelectServiceByTitle(p.title)}
+                    className="hover:text-brand-cyan transition-colors text-left"
+                  >
+                    {p.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4: Technical Services (2 cols) */}
+          <div className="lg:col-span-2 space-y-3">
+            <h4 className="text-xs font-bold text-brand-text tracking-wider uppercase font-mono">
+              Services
+            </h4>
+            <ul className="space-y-2 text-xs text-brand-muted">
+              {SERVICES_LIST.map((s) => (
                 <li key={s.id}>
                   <button
                     type="button"
@@ -101,12 +126,12 @@ export function Footer({
             </ul>
           </div>
 
-          {/* Col 4: Contact Information (3 cols) */}
+          {/* Col 5: Contact Information (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-sm font-bold text-brand-text tracking-wide uppercase font-mono">
-              Contact Information
+            <h4 className="text-xs font-bold text-brand-text tracking-wider uppercase font-mono">
+              Contact & SLA Desk
             </h4>
-            <div className="space-y-3 text-xs sm:text-sm text-brand-muted">
+            <div className="space-y-3 text-xs text-brand-muted">
               {/* Address */}
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-cyan shrink-0 mt-0.5" />

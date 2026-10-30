@@ -84,9 +84,10 @@ export function AboutSection({ onOpenQuoteModal }: AboutSectionProps) {
             </h2>
 
             <p className="text-sm sm:text-base text-brand-muted leading-relaxed">
-              Rather than waiting for unpredicted battery thermal runaway or sudden UPS failure during mains loss,
-              <strong> Eazy Tech Solutions</strong> implements predictive condition monitoring. We identify
-              deteriorating cells, DC capacitor wear, and harmonic irregularities before they impact critical loads.
+              As an <strong>End-to-End Critical Power Service Provider</strong>, <strong>Eazy Tech Solutions</strong> combines
+              reliable equipment supply—including UPS systems, industrial batteries, and specialized cables—with
+              comprehensive power audits, load studies, IEEE 1188 battery testing, preventive AMC contracts, 24/7 emergency repairs,
+              and expert power consultancy to ensure your critical operations never stop.
             </p>
 
             {/* 4 Pillars from Brochure */}

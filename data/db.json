@@ -1,6 +1,23 @@
 {
   "enquiries": [
     {
+      "fullName": "Arjun Mehta",
+      "businessEmail": "arjun@datacenterinfra.in",
+      "companyName": "Mehta Power Infra",
+      "phoneNumber": "+919876543210",
+      "serviceRequired": "DC Cables",
+      "siteLocation": "Noida Sector 62",
+      "requirementDescription": "Requirement for 150m heavy duty flexible DC cables for 200 kVA battery bank interconnection.",
+      "consent": true,
+      "sourceIp": "::1",
+      "id": "ETS-2026-2378",
+      "createdAt": "2026-10-30T00:57:13.294Z",
+      "updatedAt": "2026-10-30T00:57:13.315Z",
+      "status": "NEW",
+      "notes": [],
+      "emailStatus": "QUEUED_LOCAL"
+    },
+    {
       "fullName": "Siddharth Rao",
       "businessEmail": "s.rao@apexdatacenters.in",
       "companyName": "Apex Data Systems Ltd",
@@ -84,7 +101,7 @@
     }
   ],
   "settings": {
-    "lastUpdated": "2026-10-29T13:16:32.963Z",
+    "lastUpdated": "2026-10-30T00:57:13.315Z",
     "version": "1.0.0"
   }
 }

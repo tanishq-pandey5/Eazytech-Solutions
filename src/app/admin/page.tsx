@@ -322,14 +322,23 @@ export default function AdminPage() {
               onChange={(e) => setServiceFilter(e.target.value)}
               className="px-3 py-2 rounded-lg bg-brand-secondary border border-brand-border text-xs text-brand-text focus:outline-none focus:border-brand-cyan max-w-[200px]"
             >
-              <option value="ALL">All Services</option>
-              <option value="UPS & Battery Supply">UPS & Battery Supply</option>
-              <option value="Maintenance Contracts">AMC / CAMC</option>
-              <option value="Emergency Breakdown">Emergency Repair</option>
-              <option value="Power Quality">Power Quality Audits</option>
-              <option value="Power Backup Consultancy">Consultancy</option>
-              <option value="Battery Impedance">Battery Testing</option>
-              <option value="SNMP">Smart SNMP / Netman 204</option>
+              <option value="ALL">All Offerings</option>
+              <optgroup label="Products & Solutions">
+                <option value="UPS Systems">UPS Systems</option>
+                <option value="Batteries">Batteries</option>
+                <option value="DC Cables">DC Cables</option>
+                <option value="Uninyvin Cables">Uninyvin Cables</option>
+                <option value="Miracle Cables">Miracle Cables</option>
+                <option value="Battery Link Sets">Battery Link Sets</option>
+              </optgroup>
+              <optgroup label="Technical Services">
+                <option value="Power Audit">Power Audit</option>
+                <option value="Load Study">Load Study</option>
+                <option value="Battery Impedance Testing">Battery Impedance Testing</option>
+                <option value="UPS AMC">UPS AMC</option>
+                <option value="UPS Repair">UPS Repair</option>
+                <option value="Power Consultancy">Power Consultancy</option>
+              </optgroup>
             </select>
           </div>
         </div>

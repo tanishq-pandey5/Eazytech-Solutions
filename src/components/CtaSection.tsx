@@ -59,8 +59,8 @@ export function CtaSection({ onOpenQuoteModal }: CtaSectionProps) {
               </h2>
 
               <p className="text-base text-brand-muted max-w-xl leading-relaxed">
-                Talk to our engineering team about UPS systems, annual maintenance contracts (AMC/CAMC),
-                battery diagnostics, power quality harmonic audits, or remote SNMP telemetry.
+                Connect with our technical team for UPS systems, battery solutions, specialized power cables,
+                power audits, load studies, battery testing, maintenance contracts, or repairs.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">

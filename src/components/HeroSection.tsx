@@ -88,18 +88,18 @@ export function HeroSection({ onOpenQuoteModal, onOpenOverviewModal }: HeroSecti
 
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold text-brand-text tracking-tight leading-[1.12]">
-              Powering the <br />
-              Infrastructure <br />
-              That Powers <br />
+              End-to-End <br />
+              Critical Power <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-[#56E0F8] to-[#1EA3C4] drop-shadow-[0_0_25px_rgba(54,215,245,0.35)]">
-                Your Business.
+                Service Provider.
               </span>
             </h1>
 
             {/* Supporting Copy */}
             <p className="text-sm sm:text-base text-brand-muted max-w-xl leading-relaxed">
-              From UPS systems and battery diagnostics to preventive maintenance and intelligent
-              power monitoring, we help businesses protect their critical electrical infrastructure.
+              Your trusted partner for reliable power solutions, delivering UPS systems, battery solutions,
+              power audits, maintenance, testing, and technical consultancy to keep your operations running
+              without interruption.
             </p>
 
             {/* Actions */}
@@ -126,7 +126,12 @@ export function HeroSection({ onOpenQuoteModal, onOpenOverviewModal }: HeroSecti
           <div className="lg:col-span-5 flex flex-col items-start lg:items-end justify-between space-y-12 lg:space-y-24 py-6">
             {/* Vertical Technical Badges */}
             <div className="flex flex-col items-start lg:items-end space-y-2.5 text-left lg:text-right">
-              {['UPS SYSTEMS', 'BATTERY SOLUTIONS', 'POWER QUALITY', 'REMOTE MONITORING'].map(
+              {[
+                'UPS & BATTERY SYSTEMS',
+                'INDUSTRIAL CABLES & LINKS',
+                'POWER AUDITS & LOAD STUDIES',
+                'AMC, REPAIR & CONSULTANCY',
+              ].map(
                 (item, idx) => (
                   <span
                     key={idx}

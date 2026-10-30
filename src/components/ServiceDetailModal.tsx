@@ -134,7 +134,9 @@ export function ServiceDetailModal({
             }}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm transition-all order-1 sm:order-2"
           >
-            <span>Request Quote for this Service</span>
+            <span>
+              {service.category === 'product' ? 'Request Product Quotation' : 'Request Service Quotation'}
+            </span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
