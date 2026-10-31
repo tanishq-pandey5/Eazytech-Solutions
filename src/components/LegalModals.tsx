@@ -117,13 +117,13 @@ export function TermsModal({ isOpen, onClose }: LegalModalProps) {
           <h4 className="font-bold text-brand-text text-sm">2. Telemetry and Equipment Simulation</h4>
           <p>
             All remote telemetry demos, SNMP parameters, and dashboard previews presented on this website
-            are illustrative simulations designed to demonstrate Netman 204 integration architecture.
+            are illustrative simulations designed to demonstrate SNMP interface card integration architecture.
             Live operational data requires physical hardware deployment, network configuration, and authorized access.
           </p>
           <h4 className="font-bold text-brand-text text-sm">3. Engineering Standards Compliance</h4>
           <p>
-            Diagnostics and recommendations follow applicable IEEE standards (including IEEE 1188 for stationary
-            battery maintenance) and OEM specifications. Final site implementation requires customer facility sign-off.
+            Diagnostics and recommendations follow applicable industry standards for stationary
+            battery systems, power quality benchmarking, and OEM specifications. Final site implementation requires customer facility sign-off.
           </p>
           <h4 className="font-bold text-brand-text text-sm">4. Registered Office & Jurisdiction</h4>
           <p>

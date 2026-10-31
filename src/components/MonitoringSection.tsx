@@ -110,19 +110,17 @@ export function MonitoringSection({ onOpenQuoteModal }: MonitoringSectionProps) 
         {/* Section Top Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16">
           <div className="lg:col-span-8 space-y-3">
-            <div className="inline-flex items-center gap-2 text-brand-cyan text-xs font-semibold tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 text-brand-cyan text-xs font-semibold tracking-wider uppercase font-mono">
               <span className="text-brand-cyan text-sm">✛</span>
-              <span>Smart Power Monitoring</span>
+              <span>SMART SNMP POWER MONITORING</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-text tracking-tight leading-tight">
-              Visibility Into Every <br className="hidden sm:inline" />
-              Critical Connection.
+              SNMP-Based Remote <br className="hidden sm:inline" />
+              Power Monitoring.
             </h2>
             <p className="text-sm sm:text-base text-brand-muted max-w-2xl leading-relaxed pt-1">
-              We specialize in SNMP telemetry integration with{' '}
-              <span className="text-brand-cyan font-semibold">Netman 204 cards</span> for
-              real-time monitoring, threshold alerts, and automated multi-server shutdown across
-              enterprise IT and BMS infrastructures.
+              Integration of SNMP interface cards into UPS communication systems for network-based monitoring,
+              equipment status visibility and remote alerts across enterprise IT, data centers, and BMS platforms.
             </p>
           </div>
 
@@ -132,7 +130,7 @@ export function MonitoringSection({ onOpenQuoteModal }: MonitoringSectionProps) 
               onClick={() => onOpenQuoteModal('Smart SNMP Power Telemetry and Remote Monitoring')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow transition-all"
             >
-              <span>Learn About Monitoring</span>
+              <span>Inquire SNMP Architecture</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -181,6 +179,84 @@ export function MonitoringSection({ onOpenQuoteModal }: MonitoringSectionProps) 
           </div>
         </div>
 
+        {/* 6-Point SNMP Architecture & Deployment Workflow */}
+        <div className="mb-14 p-6 sm:p-8 rounded-2xl bg-brand-card/50 border border-brand-border/80">
+          <div className="mb-6">
+            <span className="text-[11px] font-mono uppercase text-brand-cyan font-semibold tracking-wider">
+              Deployment Lifecycle & Technical Process
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-brand-text mt-1">
+              End-to-End SNMP Implementation Framework
+            </h3>
+            <p className="text-xs sm:text-sm text-brand-muted mt-1 max-w-3xl leading-relaxed">
+              Step-by-step engineering methodology for physical integration, IP provisioning, protocol security,
+              and seamless centralized telemetry ingestion.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="p-4 rounded-xl bg-brand-secondary/70 border border-brand-border/60 hover:border-brand-cyan/40 transition-all">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-mono font-bold text-brand-cyan">01.</span>
+                <h4 className="text-xs sm:text-sm font-bold text-brand-text">Physical Slot Integration</h4>
+              </div>
+              <p className="text-xs text-brand-muted leading-relaxed">
+                Precise mechanical insertion of the SNMP interface card into the UPS communications option slot with safe galvanic isolation and bus connectivity.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-brand-secondary/70 border border-brand-border/60 hover:border-brand-cyan/40 transition-all">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-mono font-bold text-brand-cyan">02.</span>
+                <h4 className="text-xs sm:text-sm font-bold text-brand-text">SNMP Interface Card Installation</h4>
+              </div>
+              <p className="text-xs text-brand-muted leading-relaxed">
+                Hardware seating verification, ground continuity verification, firmware integrity check, and operational power-on diagnostic validation.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-brand-secondary/70 border border-brand-border/60 hover:border-brand-cyan/40 transition-all">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-mono font-bold text-brand-cyan">03.</span>
+                <h4 className="text-xs sm:text-sm font-bold text-brand-text">IP Network Configuration</h4>
+              </div>
+              <p className="text-xs text-brand-muted leading-relaxed">
+                Static IP assignment, subnet masking, gateway routing, DNS binding, and dedicated VLAN isolation for critical power telemetry.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-brand-secondary/70 border border-brand-border/60 hover:border-brand-cyan/40 transition-all">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-mono font-bold text-brand-cyan">04.</span>
+                <h4 className="text-xs sm:text-sm font-bold text-brand-text">SNMP Parameter Configuration</h4>
+              </div>
+              <p className="text-xs text-brand-muted leading-relaxed">
+                Setting RFC 1628 standard UPS-MIB tables, trap community strings, SNMP v3 authentication credentials, and privacy encryption profiles.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-brand-secondary/70 border border-brand-border/60 hover:border-brand-cyan/40 transition-all">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-mono font-bold text-brand-cyan">05.</span>
+                <h4 className="text-xs sm:text-sm font-bold text-brand-text">Network Communication</h4>
+              </div>
+              <p className="text-xs text-brand-muted leading-relaxed">
+                Low-latency bi-directional polling and instantaneous threshold event-driven trap delivery over secure enterprise Ethernet uplinks.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-brand-secondary/70 border border-brand-border/60 hover:border-brand-cyan/40 transition-all">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-xs font-mono font-bold text-brand-cyan">06.</span>
+                <h4 className="text-xs sm:text-sm font-bold text-brand-text">Monitoring System Integration</h4>
+              </div>
+              <p className="text-xs text-brand-muted leading-relaxed">
+                Telemetry ingestion into Building Management Systems (BMS), DCIM platforms, Modbus/TCP gateways, and automated server shutdown daemons.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* 4 Core Monitoring Capability Pillars */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-14">
           {MONITORING_PILLARS.map((pillar, idx) => (
@@ -211,7 +287,7 @@ export function MonitoringSection({ onOpenQuoteModal }: MonitoringSectionProps) 
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold text-brand-text">
-                    NETMAN 204 SNMP AGENT v3
+                    SNMP INTERFACE CARD (SNMP v3)
                   </span>
                   <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-brand-cyan/15 text-brand-cyan border border-brand-cyan/30">
                     LIVE BACKEND TELEMETRY
@@ -360,7 +436,7 @@ export function MonitoringSection({ onOpenQuoteModal }: MonitoringSectionProps) 
               <span className="text-brand-text">{current.event}</span>
             </div>
             <span className="text-brand-muted/70 text-[10px] tracking-wide">
-              NOTICE: Simulated metrics from /api/telemetry. Production deployment interfaces directly with physical Netman 204 IP agent.
+              NOTICE: Simulated metrics from /api/telemetry. Production deployment interfaces directly with physical SNMP interface card.
             </span>
           </div>
         </div>

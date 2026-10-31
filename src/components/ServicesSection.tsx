@@ -17,11 +17,15 @@ import {
   Package,
   Cpu,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
 } from 'lucide-react';
 import {
   PRODUCTS_LIST,
   SERVICES_LIST,
   ALL_OFFERINGS,
+  CABLE_GALLERY,
   OfferingItem,
   ServiceItem,
 } from '@/data/companyData';
@@ -35,6 +39,7 @@ type TabType = 'all' | 'products' | 'services';
 
 export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesSectionProps) {
   const [activeTab, setActiveTab] = useState<TabType>('all');
+  const [activeCableIndex, setActiveCableIndex] = useState(0);
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -63,12 +68,32 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
     }
   };
 
-  const displayedOfferings =
+  const handlePrevCable = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveCableIndex((prev) => (prev === 0 ? CABLE_GALLERY.length - 1 : prev - 1));
+  };
+
+  const handleNextCable = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveCableIndex((prev) => (prev === CABLE_GALLERY.length - 1 ? 0 : prev + 1));
+  };
+
+  // Standalone offerings in grid (Cables consolidated into DC Cables Showcase)
+  const nonCableOfferings = (
     activeTab === 'all'
       ? ALL_OFFERINGS
       : activeTab === 'products'
       ? PRODUCTS_LIST
-      : SERVICES_LIST;
+      : SERVICES_LIST
+  ).filter((item) => item.id !== 'dc-cables' && item.id !== 'uninyvin-cables' && item.id !== 'miracle-cables');
+
+  const showCablesShowcase = activeTab === 'all' || activeTab === 'products';
+
+  const dcCableProduct = PRODUCTS_LIST.find((p) => p.id === 'dc-cables') || PRODUCTS_LIST[2];
+  const uninyvinProduct = PRODUCTS_LIST.find((p) => p.id === 'uninyvin-cables') || PRODUCTS_LIST[3];
+  const miracleProduct = PRODUCTS_LIST.find((p) => p.id === 'miracle-cables') || PRODUCTS_LIST[4];
+
+  const currentCable = CABLE_GALLERY[activeCableIndex];
 
   return (
     <section id="services" className="py-24 bg-brand-bg relative overflow-hidden">
@@ -170,19 +195,248 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
           <div className="hidden lg:flex items-center gap-4 text-xs font-mono text-brand-muted">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-brand-cyan" />
-              <span>Hardware & Accessories</span>
+              <span>Hardware & Cables</span>
             </span>
             <span className="text-brand-border">|</span>
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#56E0F8]" />
-              <span>Engineering & Diagnostics</span>
+              <span>Diagnostics & Maintenance</span>
             </span>
           </div>
         </div>
 
-        {/* 12 Offerings Grid (3 columns on desktop, 2 on tablet, 1 on mobile) */}
+        {/* MAIN SHOWCASE: CONSOLIDATED DC CABLES SHOWCASE (When All or Products Tab is Active) */}
+        {showCablesShowcase && (
+          <div className="mb-8 rounded-3xl bg-brand-card/95 border border-brand-cyan/40 p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
+            {/* Ambient cyan glow */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[100px] pointer-events-none" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+              {/* Left Column: DC Cables Showcase Info & 3 Product Categories */}
+              <div className="lg:col-span-6 space-y-6">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <span className="text-[11px] font-mono uppercase px-3 py-1 rounded-full bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/40 font-semibold tracking-wider">
+                    MAIN CABLE PRODUCT SHOWCASE
+                  </span>
+                  <span className="text-[11px] font-mono uppercase px-2.5 py-1 rounded-full bg-brand-secondary text-brand-muted border border-brand-border">
+                    Power Distribution Solutions
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-text tracking-tight">
+                    DC Cables & Industrial Cabling
+                  </h3>
+                  <p className="text-sm text-brand-muted mt-2 leading-relaxed">
+                    Heavy-duty flexible DC power cables engineered specifically for low voltage-drop connections
+                    between industrial battery banks and UPS inverter rectifiers. Consolidates our full range of
+                    power cables, extreme-duty Uninyvin cables, and ultra-flexible Miracle cables.
+                  </p>
+                </div>
+
+                {/* 3 Confirmed Product Categories with Descriptions */}
+                <div className="space-y-3 pt-1">
+                  <span className="text-xs font-mono uppercase text-brand-cyan tracking-wider font-semibold block">
+                    Product Categories Included:
+                  </span>
+
+                  <div className="grid grid-cols-1 gap-2.5">
+                    {/* Category 1: DC Cables */}
+                    <div
+                      onClick={() => {
+                        setActiveCableIndex(0);
+                        onSelectService(dcCableProduct);
+                      }}
+                      className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start justify-between gap-3 ${
+                        activeCableIndex === 0
+                          ? 'bg-brand-secondary border-brand-cyan/60 shadow-cyan-glow-sm'
+                          : 'bg-brand-secondary/50 border-brand-border/60 hover:border-brand-border hover:bg-brand-secondary/80'
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
+                          <Layers className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h4 className="text-sm font-bold text-brand-text">1. DC Cables</h4>
+                            <span className="text-[10px] font-mono text-brand-cyan">Active View</span>
+                          </div>
+                          <p className="text-xs text-brand-muted mt-0.5">
+                            DC power cable solutions.
+                          </p>
+                        </div>
+                      </div>
+                      <Eye className="w-4 h-4 text-brand-cyan shrink-0 mt-1" />
+                    </div>
+
+                    {/* Category 2: Uninyvin Cables */}
+                    <div
+                      onClick={() => {
+                        setActiveCableIndex(1);
+                        onSelectService(uninyvinProduct);
+                      }}
+                      className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start justify-between gap-3 ${
+                        activeCableIndex === 1
+                          ? 'bg-brand-secondary border-brand-cyan/60 shadow-cyan-glow-sm'
+                          : 'bg-brand-secondary/50 border-brand-border/60 hover:border-brand-border hover:bg-brand-secondary/80'
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
+                          <ShieldAlert className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h4 className="text-sm font-bold text-brand-text">2. Uninyvin Cables</h4>
+                            <span className="text-[10px] font-mono text-brand-muted/80">Heat & Oil Resistant</span>
+                          </div>
+                          <p className="text-xs text-brand-muted mt-0.5">
+                            Specialized Uninyvin cable solutions.
+                          </p>
+                        </div>
+                      </div>
+                      <Eye className="w-4 h-4 text-brand-muted hover:text-brand-cyan shrink-0 mt-1" />
+                    </div>
+
+                    {/* Category 3: Miracle Cables */}
+                    <div
+                      onClick={() => {
+                        setActiveCableIndex(2);
+                        onSelectService(miracleProduct);
+                      }}
+                      className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start justify-between gap-3 ${
+                        activeCableIndex === 2
+                          ? 'bg-brand-secondary border-brand-cyan/60 shadow-cyan-glow-sm'
+                          : 'bg-brand-secondary/50 border-brand-border/60 hover:border-brand-border hover:bg-brand-secondary/80'
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
+                          <Sparkles className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h4 className="text-sm font-bold text-brand-text">3. Miracle Cables</h4>
+                            <span className="text-[10px] font-mono text-brand-muted/80">Ultra-Flexible</span>
+                          </div>
+                          <p className="text-xs text-brand-muted mt-0.5">
+                            Miracle cable products and solutions.
+                          </p>
+                        </div>
+                      </div>
+                      <Eye className="w-4 h-4 text-brand-muted hover:text-brand-cyan shrink-0 mt-1" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Actions */}
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <button
+                    type="button"
+                    onClick={() => onSelectService(dcCableProduct)}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm transition-all"
+                  >
+                    <span>View Technical Specifications</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => onOpenQuoteModal('DC Cables')}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-xs font-semibold text-brand-text bg-brand-secondary border border-brand-border hover:border-brand-cyan/60 transition-all"
+                  >
+                    <span>Request Cable Quotation</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Right Column: Interactive Cable Carousel & Gallery */}
+              <div className="lg:col-span-6 flex flex-col items-center">
+                <div className="w-full relative rounded-2xl overflow-hidden bg-brand-secondary border border-brand-border shadow-xl group">
+                  {/* Image Viewport */}
+                  <div className="relative h-72 sm:h-84 md:h-96 w-full">
+                    <Image
+                      src={currentCable.image}
+                      alt={currentCable.title}
+                      fill
+                      className="object-cover object-center transition-all duration-500"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#071321] via-transparent to-transparent opacity-80" />
+
+                    {/* Navigation Arrows */}
+                    <button
+                      type="button"
+                      onClick={handlePrevCable}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#071321]/80 border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-cyan hover:border-brand-cyan transition-all backdrop-blur-sm"
+                      aria-label="Previous cable image"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleNextCable}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#071321]/80 border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-cyan hover:border-brand-cyan transition-all backdrop-blur-sm"
+                      aria-label="Next cable image"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+
+                    {/* Active Caption Overlay */}
+                    <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-brand-card/90 border border-brand-border/80 backdrop-blur-md flex items-center justify-between">
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-semibold">
+                            {currentCable.tag}
+                          </span>
+                          <span className="text-[11px] font-mono text-brand-muted">
+                            {currentCable.category}
+                          </span>
+                        </div>
+                        <h5 className="text-sm font-bold text-brand-text mt-1">
+                          {currentCable.title}
+                        </h5>
+                      </div>
+                      <span className="text-xs font-mono text-brand-cyan font-bold">
+                        0{activeCableIndex + 1} / 0{CABLE_GALLERY.length}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Thumbnails Strip */}
+                <div className="grid grid-cols-4 gap-2.5 w-full mt-3">
+                  {CABLE_GALLERY.map((item, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setActiveCableIndex(idx)}
+                      className={`relative h-16 rounded-xl overflow-hidden border transition-all cursor-pointer ${
+                        activeCableIndex === idx
+                          ? 'border-brand-cyan ring-2 ring-brand-cyan/30'
+                          : 'border-brand-border/70 opacity-60 hover:opacity-100 hover:border-brand-border'
+                      }`}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover object-center"
+                        sizes="100px"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Other Offerings Grid (UPS Systems, Batteries, Link Sets, and Technical Services) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {displayedOfferings.map((item) => {
+          {nonCableOfferings.map((item) => {
             const isProduct = item.category === 'product';
             return (
               <div
@@ -298,7 +552,7 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
             <div className="pt-6">
               <button
                 type="button"
-                onClick={() => onOpenQuoteModal('UPS Systems')}
+                onClick={() => onOpenQuoteModal('DC Cables')}
                 className="inline-flex items-center gap-2 text-xs font-semibold text-brand-cyan hover:text-brand-cyan-hover"
               >
                 <span>Request Product Specifications</span>
@@ -319,7 +573,7 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
               </h3>
               <p className="text-xs text-brand-muted leading-relaxed mb-4">
                 Field-proven engineering services to maximize electrical system reliability, eliminate
-                harmonic disturbances, verify battery health via IEEE 1188 testing, and maintain uptime
+                harmonic disturbances, verify battery health and internal impedance, and maintain uptime
                 through guaranteed AMC contracts and 24/7 repair response.
               </p>
               <div className="grid grid-cols-2 gap-2 text-xs text-brand-muted">

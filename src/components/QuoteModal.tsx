@@ -369,7 +369,7 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                     </optgroup>
                     <optgroup label="Monitoring & Other Offerings">
                       <option value="Smart SNMP Power Telemetry and Remote Monitoring">
-                        Smart SNMP Power Telemetry and Remote Monitoring (Netman 204)
+                        Smart SNMP Power Telemetry and Remote Monitoring
                       </option>
                       <option value="General Critical Power Assessment">
                         General Critical Power Assessment
@@ -401,7 +401,7 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                   type="text"
                   value={formData.equipmentModel}
                   onChange={(e) => setFormData({ ...formData, equipmentModel: e.target.value })}
-                  placeholder="e.g. 120 kVA Online UPS / 32x 12V 100Ah VRLA Batteries / Netman 204 Card"
+                  placeholder="e.g. 120 kVA Online UPS / 32x 12V 100Ah VRLA Batteries / SNMP Interface Card"
                   className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
                 />
               </div>

@@ -36,12 +36,12 @@ export function HeroSection({ onOpenQuoteModal, onOpenOverviewModal }: HeroSecti
     {
       title: 'Advanced Diagnostics',
       icon: Activity,
-      desc: 'Class-A harmonic power quality & IEEE 1188 impedance tests.',
+      desc: 'Class-A harmonic power quality & cell-level impedance tests.',
     },
     {
       title: 'Remote Monitoring',
       icon: Monitor,
-      desc: 'Smart Netman 204 SNMP v1/v2c/v3 telemetry & BMS alerts.',
+      desc: 'Smart SNMP interface cards, IP telemetry & BMS alerts.',
     },
   ];
 

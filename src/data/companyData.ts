@@ -9,6 +9,7 @@ export interface OfferingItem {
   deliverables: string[];
   icon: string;
   image: string;
+  gallery?: string[];
   tag: string;
   standards?: string;
 }
@@ -80,14 +81,14 @@ export const CORE_CAPABILITIES = [
     id: "advanced-diagnostics",
     title: "Advanced Diagnostics",
     shortTitle: "Power Diagnostics",
-    description: "Class-A power quality audits, harmonic distortion profiling, and IEEE 1188 cell-level impedance testing.",
+    description: "Class-A power quality audits, harmonic distortion profiling, and cell-level battery impedance testing.",
     icon: "Activity",
   },
   {
     id: "remote-monitoring",
     title: "Remote Monitoring",
     shortTitle: "Remote Monitoring",
-    description: "Smart SNMP v1/v2c/v3 telemetry integration with Netman 204 cards for real-time alerts and BMS integration.",
+    description: "Smart SNMP v1/v2c/v3 telemetry integration with SNMP interface cards for real-time alerts and BMS integration.",
     icon: "Monitor",
   },
 ];
@@ -136,7 +137,7 @@ export const PRODUCTS_LIST: OfferingItem[] = [
     icon: "BatteryCharging",
     image: "/images/service-battery-testing-hd.jpg",
     tag: "Energy Storage",
-    standards: "IEEE & OEM Battery Standards",
+    standards: "OEM & Industrial Battery Standards",
   },
   {
     id: "dc-cables",
@@ -145,9 +146,9 @@ export const PRODUCTS_LIST: OfferingItem[] = [
     shortTitle: "DC Cables",
     shortDescription: "DC power cable solutions.",
     fullDescription:
-      "Heavy-duty flexible DC power cables engineered specifically for low voltage-drop connections between industrial battery banks and UPS inverter rectifiers.",
+      "Heavy-duty flexible DC power cables engineered specifically for low voltage-drop connections between industrial battery banks and UPS inverter rectifiers. Includes specialized Uninyvin and ultra-flexible Miracle cable solutions.",
     scope:
-      "High-amperage, double-insulated flexible copper DC cables with flame-retardant outer sheathing rated for high DC current draws and continuous duty.",
+      "High-amperage, double-insulated flexible copper DC cables with flame-retardant outer sheathing rated for high DC current draws and continuous duty, alongside specialized and flexible cable variants.",
     deliverables: [
       "99.9% electrolytic grade high-conductivity copper conductors",
       "Flame-retardant, heat-resistant insulation",
@@ -156,6 +157,12 @@ export const PRODUCTS_LIST: OfferingItem[] = [
     ],
     icon: "Layers",
     image: "/images/product-dc-cables-hd.jpg",
+    gallery: [
+      "/images/product-dc-cables-hd.jpg",
+      "/images/product-uninyvin-cables-hd.jpg",
+      "/images/product-miracle-cables-hd.jpg",
+      "/images/product-battery-links-hd.jpg",
+    ],
     tag: "Power Distribution",
     standards: "IS & IEC Power Cable Standards",
   },
@@ -177,6 +184,12 @@ export const PRODUCTS_LIST: OfferingItem[] = [
     ],
     icon: "ShieldAlert",
     image: "/images/product-uninyvin-cables-hd.jpg",
+    gallery: [
+      "/images/product-dc-cables-hd.jpg",
+      "/images/product-uninyvin-cables-hd.jpg",
+      "/images/product-miracle-cables-hd.jpg",
+      "/images/product-battery-links-hd.jpg",
+    ],
     tag: "Specialized Cables",
     standards: "Def-Stan & Industrial Specifications",
   },
@@ -198,6 +211,12 @@ export const PRODUCTS_LIST: OfferingItem[] = [
     ],
     icon: "Sparkles",
     image: "/images/product-miracle-cables-hd.jpg",
+    gallery: [
+      "/images/product-dc-cables-hd.jpg",
+      "/images/product-uninyvin-cables-hd.jpg",
+      "/images/product-miracle-cables-hd.jpg",
+      "/images/product-battery-links-hd.jpg",
+    ],
     tag: "Flexible Power Cables",
     standards: "High-Conductivity Standards",
   },
@@ -220,7 +239,7 @@ export const PRODUCTS_LIST: OfferingItem[] = [
     icon: "Boxes",
     image: "/images/product-battery-links-hd.jpg",
     tag: "Interconnection Accessories",
-    standards: "IEEE 1188 Hardware Compliance",
+    standards: "Industrial Hardware Compliance Standards",
   },
 ];
 
@@ -284,12 +303,12 @@ export const SERVICES_LIST: OfferingItem[] = [
       "Cell-by-cell micro-ohm internal resistance logs",
       "Inter-cell connector torque and resistance verification",
       "Constant-current DC load bank discharge curve validation",
-      "Compliance certification under IEEE 1188 recommended practices",
+      "Comprehensive cell impedance and health certification report",
     ],
     icon: "BatteryCharging",
     image: "/images/service-battery-testing-hd.jpg",
     tag: "Condition Monitoring",
-    standards: "IEEE 1188 Recommended Practices",
+    standards: "Standard Battery Diagnostic Protocols",
   },
   {
     id: "ups-amc",
@@ -352,7 +371,7 @@ export const SERVICES_LIST: OfferingItem[] = [
     icon: "FileText",
     image: "/images/service-consultancy.png",
     tag: "Technical Advisory",
-    standards: "National Electrical Code & IEEE Standards",
+    standards: "National Electrical Code & Industrial Standards",
   },
 ];
 
@@ -374,10 +393,10 @@ export const MONITORING_WORKFLOW = [
   },
   {
     step: "02",
-    node: "NETMAN 204",
-    subtitle: "SNMP Card Slot installation & configuration",
-    description: "High-performance SNMP interface card slotted into the UPS communications bay, translating proprietary bus data into standard MIB protocols.",
-    image: "/images/workflow-netman204-v1.png",
+    node: "SNMP INTERFACE CARD",
+    subtitle: "Card slot installation & network configuration",
+    description: "Physical slot integration into the UPS communications bay, configuring IP network parameters and enabling SNMP telemetry broadcasting.",
+    image: "/images/workflow-snmp-card-v1.png",
   },
   {
     step: "03",
@@ -429,7 +448,7 @@ export const INDUSTRIES: IndustryItem[] = [
     recommendedServices: [
       "Online UPS & Battery Banks",
       "Comprehensive CAMC Maintenance",
-      "Netman 204 SNMP Telemetry",
+      "Smart SNMP Telemetry & Remote Alerts",
       "Power Quality & Harmonic Audits",
     ],
     image: "/images/hero-datacenter-hd.jpg",
@@ -458,7 +477,7 @@ export const INDUSTRIES: IndustryItem[] = [
     criticality: "Stringent adherence to medical electrical safety, zero earth-leakage current, and immediate generator-to-UPS synchronization.",
     recommendedServices: [
       "Online Double Conversion Medical UPS",
-      "IEEE 1188 Battery Impedance Audits",
+      "Cell-Level Battery Impedance Testing",
       "Quarterly Preventive AMC",
       "24/7 Dedicated Emergency Standby",
     ],
@@ -473,7 +492,7 @@ export const INDUSTRIES: IndustryItem[] = [
     criticality: "Compact footprint, clean battery runtime, remote multi-site telemetry, and automated graceful server shutdown triggers.",
     recommendedServices: [
       "Rackmount & Tower UPS Systems",
-      "Netman 204 SNMP Integration",
+      "SNMP Remote Monitoring Integration",
       "AMC Maintenance Contracts",
       "Consultancy & Capacity Upgrades",
     ],
@@ -497,7 +516,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     title: "Evaluate",
     tagline: "Diagnostic Infrastructure Inspection",
     description: "Inspect electrical infrastructure, battery string health, harmonics, and identify critical vulnerability areas.",
-    deliverables: ["Class-A power quality analysis", "IEEE 1188 impedance test", "Single Line Diagram review"],
+    deliverables: ["Class-A power quality analysis", "Battery impedance and health test", "Single Line Diagram review"],
     icon: "FileCheck",
   },
   {
@@ -506,7 +525,7 @@ export const PROCESS_STEPS: ProcessStep[] = [
     title: "Implement",
     tagline: "Deployment & Maintenance",
     description: "Supply, configure, install, or maintain systems with OEM precision and strict safety protocols.",
-    deliverables: ["Turnkey UPS rig-in & cabling", "Netman 204 IP configuration", "Quarterly scheduled AMC execution"],
+    deliverables: ["Turnkey UPS rig-in & cabling", "SNMP interface card IP configuration", "Quarterly scheduled AMC execution"],
     icon: "Settings",
   },
   {
@@ -543,10 +562,10 @@ export const TRUST_HIGHLIGHTS = [
   },
 ];
 
-export const NETMAN_204_SPECS = {
-  model: "Netman 204",
+export const SNMP_CARD_SPECS = {
+  model: "SNMP Interface Card",
   type: "UPS Network Interface SNMP / Web Card",
-  compatibility: "Riello & standard OEM compatible critical UPS architectures with expansion slots",
+  compatibility: "Compatible with standard critical UPS architectures with expansion communication slots",
   network: "10/100/1000 Mbps RJ45 Auto-sensing Ethernet",
   protocols: [
     "SNMP v1, SNMP v2c, SNMP v3 (with SHA / AES encryption)",
@@ -563,3 +582,46 @@ export const NETMAN_204_SPECS = {
     "Environmental sensor support (temperature & humidity probe input)",
   ],
 };
+
+export const CABLE_GALLERY = [
+  {
+    id: "dc-power",
+    title: "DC Power Cables",
+    category: "DC Cables",
+    shortDesc: "DC power cable solutions.",
+    description:
+      "Heavy-duty flexible DC power cables engineered for low voltage-drop connections between battery banks and UPS inverters.",
+    image: "/images/product-dc-cables-hd.jpg",
+    tag: "Low-Loss DC Distribution",
+  },
+  {
+    id: "uninyvin",
+    title: "Uninyvin Cables",
+    category: "Uninyvin Cables",
+    shortDesc: "Specialized Uninyvin cable solutions.",
+    description:
+      "Specialized high-temperature and chemical-resistant Uninyvin power cables designed for harsh industrial environments.",
+    image: "/images/product-uninyvin-cables-hd.jpg",
+    tag: "High-Temperature Endurance",
+  },
+  {
+    id: "miracle",
+    title: "Miracle Cables",
+    category: "Miracle Cables",
+    shortDesc: "Miracle cable products and solutions.",
+    description:
+      "Ultra-flexible multi-strand tinned copper power cables engineered for maximum current-carrying efficiency and tight-bend routing.",
+    image: "/images/product-miracle-cables-hd.jpg",
+    tag: "High-Flexibility Micro-Strands",
+  },
+  {
+    id: "terminations",
+    title: "Cable Connectors & Link Sets",
+    category: "Terminations & Busbars",
+    shortDesc: "Interconnection hardware and protective shrouds.",
+    description:
+      "Solid electrolytic copper busbars, heavy crimped lugs, and touch-proof shroud covers for battery and UPS connections.",
+    image: "/images/product-battery-links-hd.jpg",
+    tag: "Certified Terminations",
+  },
+];

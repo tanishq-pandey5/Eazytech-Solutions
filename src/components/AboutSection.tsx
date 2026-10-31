@@ -26,11 +26,6 @@ export function AboutSection({ onOpenQuoteModal }: AboutSectionProps) {
       value: '100%',
       desc: 'Factory-grade parts & testing',
     },
-    {
-      label: 'DIAGNOSTIC COMPLIANCE',
-      value: 'IEEE 1188',
-      desc: 'Scientific battery benchmarking',
-    },
   ];
 
   return (
@@ -86,12 +81,12 @@ export function AboutSection({ onOpenQuoteModal }: AboutSectionProps) {
             <p className="text-sm sm:text-base text-brand-muted leading-relaxed">
               As an <strong>End-to-End Critical Power Service Provider</strong>, <strong>Eazy Tech Solutions</strong> combines
               reliable equipment supply—including UPS systems, industrial batteries, and specialized cables—with
-              comprehensive power audits, load studies, IEEE 1188 battery testing, preventive AMC contracts, 24/7 emergency repairs,
+              comprehensive power audits, load studies, battery impedance testing, preventive AMC contracts, 24/7 emergency repairs,
               and expert power consultancy to ensure your critical operations never stop.
             </p>
 
-            {/* 4 Pillars from Brochure */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+            {/* 3 Pillars (Balanced Layout) */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               {metrics.map((m, idx) => (
                 <div
                   key={idx}
@@ -131,8 +126,8 @@ export function AboutSection({ onOpenQuoteModal }: AboutSectionProps) {
               <div className="flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-brand-cyan shrink-0 mt-0.5" />
                 <span>
-                  <strong>IEEE 1188 Compliance:</strong> Rigorous cell-level internal impedance and timed DC
-                  load-bank discharge testing.
+                  <strong>Battery Diagnostics & Capacity Testing:</strong> Rigorous cell-level internal impedance,
+                  conductance measurement, and timed DC load-bank discharge testing.
                 </span>
               </div>
             </div>

@@ -83,7 +83,7 @@ const INITIAL_DB: DatabaseSchema = {
       siteLocation: 'Patparganj, Delhi',
       equipmentModel: '64x 12V 150Ah SMF VRLA Battery Bank',
       requirementDescription:
-        'Annual IEEE 1188 cell-level impedance measurement and timed discharge testing required for ICU and surgical emergency backup bank.',
+        'Annual cell-level internal impedance measurement and timed discharge testing required for ICU and surgical emergency backup bank.',
       consent: true,
       status: 'NEW',
       notes: [],
@@ -95,7 +95,7 @@ const INITIAL_DB: DatabaseSchema = {
     {
       id: 'REQ-1001',
       createdAt: new Date(Date.now() - 3600000 * 5).toISOString(),
-      resourceTitle: 'Netman 204 SNMP MIB & Architecture Spec',
+      resourceTitle: 'SNMP Integration Overview',
       businessEmail: 'techlead@noidadatacenter.com',
       fullName: 'Amit Saxena',
     },

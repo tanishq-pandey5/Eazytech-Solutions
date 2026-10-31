@@ -42,7 +42,7 @@ export function OverviewModal({ isOpen, onClose, onOpenQuoteModal }: OverviewMod
       ],
     },
     {
-      title: 'Diagnostic Precision & IEEE 1188 Compliance',
+      title: 'Diagnostic Precision & Battery Health Testing',
       eyebrow: 'CAPABILITY 03',
       description:
         'Field measurements conducted with calibrated Class-A analyzers and digital micro-ohmmeters. We profile harmonic currents (THD-V/THD-I) and measure individual cell impedance.',
@@ -50,15 +50,15 @@ export function OverviewModal({ isOpen, onClose, onOpenQuoteModal }: OverviewMod
       features: [
         'Class-A harmonic distortion audits',
         'Cell-by-cell micro-ohm impedance logging',
-        'IEEE 1188 compliance documentation',
+        'Detailed diagnostic health certification',
       ],
     },
     {
-      title: 'Smart SNMP Telemetry & Netman 204',
+      title: 'Smart SNMP Telemetry & Remote Monitoring',
       eyebrow: 'CAPABILITY 04',
       description:
-        'Transform standalone UPS equipment into intelligent networked assets. Real-time telemetry, automated server shutdown scripts, and seamless Building Management System (BMS) integration.',
-      image: '/images/monitoring-netman204.png',
+        'Transform standalone UPS equipment into intelligent networked assets via SNMP interface cards. Real-time telemetry, automated server shutdown scripts, and seamless Building Management System (BMS) integration.',
+      image: '/images/monitoring-snmp-card.png',
       features: [
         'SNMP v1/v2c/v3 encrypted traps',
         'RFC 1628 standard UPS-MIB compatibility',

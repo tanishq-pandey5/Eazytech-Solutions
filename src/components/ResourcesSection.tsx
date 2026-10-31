@@ -16,27 +16,19 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
 
   const technicalResources = [
     {
-      title: 'Netman 204 SNMP MIB & Architecture Spec',
-      category: 'TELEMETRY WHITEPAPER',
+      title: 'SNMP Integration Overview',
+      category: 'TELEMETRY OVERVIEW',
       description:
-        'Technical parameters covering RFC 1628 UPS-MIB integration, SNMP v1/v2c/v3 encrypted traps, slot pinouts, and Modbus/TCP mapping for BMS platforms.',
-      size: 'Technical Brief',
+        'Technical overview of SNMP-based UPS communication, network configuration and remote monitoring integration.',
+      size: 'Engineering Overview',
       icon: Cpu,
-    },
-    {
-      title: 'IEEE 1188 Battery Testing Standard Guide',
-      category: 'DIAGNOSTIC PROTOCOL',
-      description:
-        'Overview of individual cell micro-ohm internal impedance, conductance benchmarking, inter-tier connection resistance, and timed DC discharge testing.',
-      size: 'Standard Protocol',
-      icon: ShieldCheck,
     },
     {
       title: 'Industrial Power Quality & Harmonics Mitigation',
       category: 'AUDIT METHODOLOGY',
       description:
         'Understanding THD-V and THD-I harmonic distortion, neutral circulating currents, and corrective filter deployment in data center and CNC manufacturing plants.',
-      size: 'Audit Whitepaper',
+      size: 'Audit Methodology',
       icon: FileText,
     },
   ];
@@ -99,7 +91,7 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {technicalResources.map((item, idx) => {
             const Icon = item.icon;
             return (

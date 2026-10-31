@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
       success: true,
       timestamp: new Date().toISOString(),
       agent: {
-        model: 'Netman 204 SNMP v3',
+        model: 'SNMP Interface Card v3',
         ip: '192.168.10.45',
         port: 161,
         mib: 'RFC 1628 Standard UPS-MIB',
@@ -33,7 +33,7 @@ export async function GET(req: NextRequest) {
         batteryVoltage: (394.2 - Math.random() * 0.4).toFixed(1),
         temperatureCelsius: (25.6 + Math.random() * 0.2).toFixed(1),
         activePath: 'DC Bus / Inverter',
-        event: 'Scheduled IEEE 1188 automated self-test routine active.',
+        event: 'Scheduled automated battery self-test routine active.',
       },
       networkStats: {
         latencyMs: (2.1 + Math.random() * 0.8).toFixed(1),
@@ -48,7 +48,7 @@ export async function GET(req: NextRequest) {
       success: true,
       timestamp: new Date().toISOString(),
       agent: {
-        model: 'Netman 204 SNMP v3',
+        model: 'SNMP Interface Card v3',
         ip: '192.168.10.45',
         port: 161,
         mib: 'RFC 1628 Standard UPS-MIB',
@@ -82,7 +82,7 @@ export async function GET(req: NextRequest) {
     success: true,
     timestamp: new Date().toISOString(),
     agent: {
-      model: 'Netman 204 SNMP v3',
+      model: 'SNMP Interface Card v3',
       ip: '192.168.10.45',
       port: 161,
       mib: 'RFC 1628 Standard UPS-MIB',

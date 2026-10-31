@@ -7,12 +7,12 @@ A premium corporate website for **Eazy Tech Solutions**, specializing in end-to-
 - **Enterprise Industrial Aesthetic**: Built with dark navy (`#071321`, `#0B1827`, `#101F30`) surfaces, electric cyan (`#36D7F5`) accents, subtle technical borders, and clean typography (Inter & JetBrains Mono).
 - **Navigation & Mobile Drawer**: Sticky header with custom vector SVG monogram logo, scrollspy indicators, mobile slide-over drawer, and instant quotation triggers.
 - **Hero & Capability Highlights**: Cinematic data center backdrop with vertical capability tags, interactive system overview video walkthrough modal, and bottom capability indicators (`01 / 04`).
-- **Core Services Section**: 6 services presented in a responsive 3-column desktop layout with technical modals detailing scope, deliverables, and IEEE/OEM standards.
-- **Smart Power Monitoring (Netman 204)**: 4-step architecture workflow (UPS System → Netman 204 → IP Network → BMS/NMS) plus an interactive **Simulated Telemetry Dashboard** previewing voltage, load %, battery condition, and SNMP v3 traps with profile switching.
+- **Core Services Section**: 6 services presented in a responsive 3-column desktop layout with technical modals detailing scope, deliverables, and OEM and industrial engineering standards.
+- **Smart Power Monitoring (SNMP)**: 4-step architecture workflow (UPS System → SNMP Interface Card → IP Network → BMS/NMS) plus an interactive **Simulated Telemetry Dashboard** previewing voltage, load %, battery condition, and SNMP v3 traps with profile switching.
 - **Industries We Serve**: Dedicated deep-dives into Data Centers, Manufacturing, Healthcare, and Enterprise IT.
 - **How We Work**: 4-step engineering methodology (Understand → Evaluate → Implement → Verify).
-- **About Us & SLA Advantage**: Factual overview derived from the corporate brochure (99.99% uptime assurance, 24/7 emergency response, calibrated instrumentation, and IEEE 1188 compliance).
-- **Engineering Resources**: Technical summaries and specification request triggers for Netman 204 MIB architecture, IEEE 1188 battery testing, and power quality harmonics.
+- **About Us & SLA Advantage**: Factual overview derived from the corporate brochure (99.99% uptime assurance, 24/7 emergency response, calibrated instrumentation, and battery diagnostics).
+- **Engineering Resources**: Technical summaries and specification request triggers for SNMP architecture and power quality harmonics.
 - **Interactive Quote & Consultation Form**: Full client-side validation, error handling, honesty notice, and service pre-selection.
 - **Technical SEO**: Dynamic sitemap (`/sitemap.xml`), `robots.txt`, OpenGraph metadata, Twitter cards, and Schema.org JSON-LD `ProfessionalService` structured data.
 - **Compliance & Privacy**: Confidential banking details and private quotation pricing are strictly protected; verified public contact information and GSTIN are displayed accurately.

@@ -76,7 +76,7 @@
       "serviceRequired": "Battery Impedance & Capacity Testing",
       "siteLocation": "Patparganj, Delhi",
       "equipmentModel": "64x 12V 150Ah SMF VRLA Battery Bank",
-      "requirementDescription": "Annual IEEE 1188 cell-level impedance measurement and timed discharge testing required for ICU and surgical emergency backup bank.",
+      "requirementDescription": "Annual cell-level internal impedance measurement and timed discharge testing required for ICU and surgical emergency backup bank.",
       "consent": true,
       "status": "NEW",
       "notes": [],
@@ -88,14 +88,14 @@
     {
       "id": "REQ-92963",
       "createdAt": "2026-10-29T13:16:32.963Z",
-      "resourceTitle": "Netman 204 SNMP MIB & Architecture Spec",
+      "resourceTitle": "SNMP Integration Overview",
       "businessEmail": "s.rao@apexdatacenters.in",
       "fullName": "Siddharth Rao"
     },
     {
       "id": "REQ-1001",
       "createdAt": "2026-10-29T08:15:28.087Z",
-      "resourceTitle": "Netman 204 SNMP MIB & Architecture Spec",
+      "resourceTitle": "SNMP Integration Overview",
       "businessEmail": "techlead@noidadatacenter.com",
       "fullName": "Amit Saxena"
     }
