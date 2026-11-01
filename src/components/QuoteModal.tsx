@@ -156,26 +156,26 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Dialog Card */}
-      <div className="relative w-full max-w-2xl bg-brand-secondary border border-brand-border rounded-2xl shadow-2xl overflow-hidden z-10 my-8">
+      <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden z-10 my-8 text-slate-900">
         {/* Header */}
-        <div className="p-6 bg-brand-card/90 border-b border-brand-border flex items-center justify-between">
+        <div className="p-6 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
           <div>
-            <span className="text-[11px] font-mono uppercase text-brand-cyan tracking-wider">
+            <span className="text-[11px] font-mono uppercase text-brand-cyan tracking-wider font-bold">
               Request a Technical Quote
             </span>
-            <h3 id="quote-modal-title" className="text-xl font-bold text-brand-text mt-0.5">
+            <h3 id="quote-modal-title" className="text-xl font-bold text-slate-900 mt-0.5">
               Power Infrastructure Consultation
             </h3>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-lg text-brand-muted hover:text-brand-text bg-brand-secondary border border-brand-border transition-colors"
+            className="p-2 rounded-lg text-slate-500 hover:text-slate-900 bg-white border border-slate-200 shadow-sm transition-colors"
             aria-label="Close quote modal"
           >
             <X className="w-5 h-5" />
@@ -187,49 +187,49 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
           {submissionResult ? (
             /* Real Backend Confirmed State */
             <div className="text-center py-6 space-y-4">
-              <div className="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center mx-auto">
+              <div className="w-14 h-14 rounded-full bg-emerald-100 border border-emerald-300 text-emerald-600 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
 
               <div>
-                <span className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider px-2.5 py-1 rounded bg-brand-cyan/10 border border-brand-cyan/20">
+                <span className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider px-2.5 py-1 rounded bg-sky-50 border border-sky-200">
                   REF ID: {submissionResult.enquiryId}
                 </span>
-                <h4 className="text-2xl font-bold text-brand-text mt-2">
-                  Enquiry Registered & Dispatched
+                <h4 className="text-2xl font-bold text-slate-900 mt-2">
+                  Enquiry Registered &amp; Dispatched
                 </h4>
-                <p className="text-xs text-brand-muted mt-1 font-mono">
+                <p className="text-xs text-slate-500 mt-1 font-mono">
                   Logged in system at: {new Date(submissionResult.createdAt).toLocaleString('en-IN')}
                 </p>
               </div>
 
-              <div className="max-w-md mx-auto p-4 rounded-xl bg-brand-card border border-brand-border text-left space-y-2 text-xs text-brand-muted font-mono">
-                <div className="flex justify-between border-b border-brand-border/40 pb-1">
+              <div className="max-w-md mx-auto p-4 rounded-xl bg-slate-50 border border-slate-200 text-left space-y-2 text-xs text-slate-600 font-mono">
+                <div className="flex justify-between border-b border-slate-200 pb-1">
                   <span>Client:</span>
-                  <span className="text-brand-text font-bold">{formData.fullName}</span>
+                  <span className="text-slate-900 font-bold">{formData.fullName}</span>
                 </div>
-                <div className="flex justify-between border-b border-brand-border/40 pb-1">
+                <div className="flex justify-between border-b border-slate-200 pb-1">
                   <span>Email:</span>
-                  <span className="text-brand-text">{formData.businessEmail}</span>
+                  <span className="text-slate-900">{formData.businessEmail}</span>
                 </div>
-                <div className="flex justify-between border-b border-brand-border/40 pb-1">
+                <div className="flex justify-between border-b border-slate-200 pb-1">
                   <span>Scope:</span>
                   <span className="text-brand-cyan font-bold">{formData.serviceRequired}</span>
                 </div>
                 {formData.equipmentModel && (
-                  <div className="flex justify-between border-b border-brand-border/40 pb-1">
+                  <div className="flex justify-between border-b border-slate-200 pb-1">
                     <span>Equipment:</span>
-                    <span className="text-brand-text">{formData.equipmentModel}</span>
+                    <span className="text-slate-900">{formData.equipmentModel}</span>
                   </div>
                 )}
                 <div className="flex justify-between pt-1">
                   <span>Backend Status:</span>
-                  <span className="text-emerald-400 font-bold">STORED IN DATABASE (ACTIVE)</span>
+                  <span className="text-emerald-600 font-bold">STORED IN DATABASE (ACTIVE)</span>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-brand-bg/80 border border-brand-border/80 text-xs text-brand-muted text-left space-y-1.5 leading-relaxed">
-                <p className="font-semibold text-brand-text flex items-center gap-1.5">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 text-left space-y-1.5 leading-relaxed">
+                <p className="font-semibold text-slate-900 flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-brand-cyan" />
                   <span>Engineering Lead Notification:</span>
                 </p>
@@ -238,7 +238,7 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                   been prepared for technical assessment and dispatched to{' '}
                   <strong className="text-brand-cyan">{COMPANY_DETAILS.contactEmail}</strong>.
                 </p>
-                <p className="pt-1 text-[11px] text-brand-muted/70">
+                <p className="pt-1 text-[11px] text-slate-500">
                   For urgent breakdown response, contact our rapid deployment desk at{' '}
                   <a href={`tel:${COMPANY_DETAILS.phoneRaw}`} className="text-brand-cyan underline font-mono">
                     {COMPANY_DETAILS.contactPhone}
@@ -250,22 +250,22 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm"
+                  className="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow-sm"
                 >
-                  Close & Done
+                  Close &amp; Done
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {serverError && (
-                <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+                <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-500" />
                   <span>{serverError}</span>
                 </div>
               )}
 
-              <p className="text-xs text-brand-muted leading-relaxed mb-4">
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
                 Provide your critical power specifications. Our technical lead will review your load sizing,
                 diagnostics, or maintenance requirements and respond with a formal engineering offer.
               </p>
@@ -273,7 +273,7 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
               {/* Row 1: Full Name & Business Email */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase text-brand-muted mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-600 mb-1 font-semibold">
                     Full Name <span className="text-brand-cyan">*</span>
                   </label>
                   <input
@@ -282,10 +282,10 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     placeholder="e.g. Vikram Malhotra"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:border-brand-cyan focus:bg-white focus:outline-none"
                   />
                   {errors.fullName && (
-                    <p className="text-[11px] text-rose-400 mt-1 flex items-center gap-1">
+                    <p className="text-[11px] text-rose-600 mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" />
                       <span>{errors.fullName}</span>
                     </p>
@@ -293,7 +293,7 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase text-brand-muted mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-600 mb-1 font-semibold">
                     Business Email <span className="text-brand-cyan">*</span>
                   </label>
                   <input
@@ -302,10 +302,10 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                     value={formData.businessEmail}
                     onChange={(e) => setFormData({ ...formData, businessEmail: e.target.value })}
                     placeholder="name@company.com"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:border-brand-cyan focus:bg-white focus:outline-none"
                   />
                   {errors.businessEmail && (
-                    <p className="text-[11px] text-rose-400 mt-1 flex items-center gap-1">
+                    <p className="text-[11px] text-rose-600 mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" />
                       <span>{errors.businessEmail}</span>
                     </p>
@@ -316,28 +316,28 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
               {/* Row 2: Company Name & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase text-brand-muted mb-1">
-                    Company / Organization <span className="text-brand-muted/60">(Optional)</span>
+                  <label className="block text-xs font-mono uppercase text-slate-600 mb-1 font-semibold">
+                    Company / Organization <span className="text-slate-400 font-normal">(Optional)</span>
                   </label>
                   <input
                     type="text"
                     value={formData.companyName}
                     onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                     placeholder="e.g. CloudCorp Data Systems"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:border-brand-cyan focus:bg-white focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase text-brand-muted mb-1">
-                    Phone Number <span className="text-brand-muted/60">(Optional)</span>
+                  <label className="block text-xs font-mono uppercase text-slate-600 mb-1 font-semibold">
+                    Phone Number <span className="text-slate-400 font-normal">(Optional)</span>
                   </label>
                   <input
                     type="tel"
                     value={formData.phoneNumber}
                     onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                     placeholder="+91 98112 34567"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:border-brand-cyan focus:bg-white focus:outline-none"
                   />
                 </div>
               </div>
@@ -345,15 +345,15 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
               {/* Row 3: Service Required & Site Location */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono uppercase text-brand-muted mb-1">
+                  <label className="block text-xs font-mono uppercase text-slate-600 mb-1 font-semibold">
                     Service Required <span className="text-brand-cyan">*</span>
                   </label>
                   <select
                     value={formData.serviceRequired}
                     onChange={(e) => setFormData({ ...formData, serviceRequired: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:border-brand-cyan focus:bg-white focus:outline-none"
                   >
-                    <optgroup label="Products & Solutions (Hardware)">
+                    <optgroup label="Products &amp; Solutions (Hardware)">
                       {PRODUCTS_LIST.map((p) => (
                         <option key={p.id} value={p.title}>
                           {p.title}
@@ -367,7 +367,7 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                         </option>
                       ))}
                     </optgroup>
-                    <optgroup label="Monitoring & Other Offerings">
+                    <optgroup label="Monitoring &amp; Other Offerings">
                       <option value="Smart SNMP Power Telemetry and Remote Monitoring">
                         Smart SNMP Power Telemetry and Remote Monitoring
                       </option>
@@ -379,36 +379,36 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase text-brand-muted mb-1">
-                    Site Location / City <span className="text-brand-muted/60">(Optional)</span>
+                  <label className="block text-xs font-mono uppercase text-slate-600 mb-1 font-semibold">
+                    Site Location / City <span className="text-slate-400 font-normal">(Optional)</span>
                   </label>
                   <input
                     type="text"
                     value={formData.siteLocation}
                     onChange={(e) => setFormData({ ...formData, siteLocation: e.target.value })}
                     placeholder="e.g. Sector 62, Noida"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:border-brand-cyan focus:bg-white focus:outline-none"
                   />
                 </div>
               </div>
 
               {/* Equipment Model / Capacity */}
               <div>
-                <label className="block text-xs font-mono uppercase text-brand-muted mb-1">
-                  Equipment Model or Capacity <span className="text-brand-muted/60">(Optional)</span>
+                <label className="block text-xs font-mono uppercase text-slate-600 mb-1 font-semibold">
+                  Equipment Model or Capacity <span className="text-slate-400 font-normal">(Optional)</span>
                 </label>
                 <input
                   type="text"
                   value={formData.equipmentModel}
                   onChange={(e) => setFormData({ ...formData, equipmentModel: e.target.value })}
                   placeholder="e.g. 120 kVA Online UPS / 32x 12V 100Ah VRLA Batteries / SNMP Interface Card"
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:border-brand-cyan focus:bg-white focus:outline-none"
                 />
               </div>
 
               {/* Requirement Description */}
               <div>
-                <label className="block text-xs font-mono uppercase text-brand-muted mb-1">
+                <label className="block text-xs font-mono uppercase text-slate-600 mb-1 font-semibold">
                   Requirement Details <span className="text-brand-cyan">*</span>
                 </label>
                 <textarea
@@ -417,10 +417,10 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                   value={formData.requirementDescription}
                   onChange={(e) => setFormData({ ...formData, requirementDescription: e.target.value })}
                   placeholder="Describe your critical loads, existing UPS capacity, battery age, or specific maintenance/testing requirements..."
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-brand-card border border-brand-border text-brand-text text-sm focus:border-brand-cyan focus:outline-none resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:border-brand-cyan focus:bg-white focus:outline-none resize-none"
                 />
                 {errors.requirementDescription && (
-                  <p className="text-[11px] text-rose-400 mt-1 flex items-center gap-1">
+                  <p className="text-[11px] text-rose-600 mt-1 flex items-center gap-1">
                     <AlertCircle className="w-3 h-3" />
                     <span>{errors.requirementDescription}</span>
                   </p>
@@ -434,15 +434,15 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
                     type="checkbox"
                     checked={formData.consent}
                     onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                    className="mt-1 rounded bg-brand-card border-brand-border text-brand-cyan focus:ring-brand-cyan"
+                    className="mt-1 rounded border-slate-300 text-brand-cyan focus:ring-brand-cyan"
                   />
-                  <span className="text-xs text-brand-muted leading-relaxed">
+                  <span className="text-xs text-slate-600 leading-relaxed">
                     I consent to submitting this technical enquiry for evaluation. Eazy Tech Solutions
                     respects commercial privacy and will not share facility or contact details with third parties.
                   </span>
                 </label>
                 {errors.consent && (
-                  <p className="text-[11px] text-rose-400 mt-1 flex items-center gap-1">
+                  <p className="text-[11px] text-rose-600 mt-1 flex items-center gap-1">
                     <AlertCircle className="w-3 h-3" />
                     <span>{errors.consent}</span>
                   </p>
@@ -450,18 +450,18 @@ export function QuoteModal({ isOpen, onClose, preselectedService }: QuoteModalPr
               </div>
 
               {/* Submit Buttons */}
-              <div className="pt-4 flex items-center justify-end gap-3 border-t border-brand-border">
+              <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-200">
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-5 py-2.5 rounded-full text-xs font-semibold text-brand-muted hover:text-brand-text transition-colors"
+                  className="px-5 py-2.5 rounded-full text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm disabled:opacity-50 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow-sm disabled:opacity-50 transition-all"
                 >
                   {isSubmitting ? (
                     <>

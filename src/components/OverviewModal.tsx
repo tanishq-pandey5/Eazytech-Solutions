@@ -75,11 +75,11 @@ export function OverviewModal({ isOpen, onClose, onOpenQuoteModal }: OverviewMod
       role="dialog"
       aria-modal="true"
     >
-      <div className="fixed inset-0 bg-black/85 backdrop-blur-md" onClick={onClose} />
+      <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-md" onClick={onClose} />
 
-      <div className="relative w-full max-w-3xl bg-brand-secondary border border-brand-border rounded-2xl shadow-2xl overflow-hidden z-10 my-8">
+      <div className="relative w-full max-w-3xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden z-10 my-8 text-slate-900">
         {/* Header */}
-        <div className="p-5 bg-brand-card/90 border-b border-brand-border flex items-center justify-between">
+        <div className="p-5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-brand-cyan animate-pulse" />
             <span className="text-xs font-mono uppercase text-brand-cyan tracking-wider font-semibold">
@@ -89,22 +89,22 @@ export function OverviewModal({ isOpen, onClose, onOpenQuoteModal }: OverviewMod
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-brand-muted hover:text-brand-text bg-brand-secondary border border-brand-border"
+            className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 bg-white border border-slate-200 shadow-sm"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Tab Selector */}
-        <div className="flex border-b border-brand-border bg-brand-bg/60 overflow-x-auto text-xs font-mono">
+        <div className="flex border-b border-slate-200 bg-slate-50/50 overflow-x-auto text-xs font-mono">
           {slides.map((s, idx) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}
               className={`px-4 py-3 whitespace-nowrap transition-colors flex items-center gap-2 border-b-2 ${
                 activeTab === idx
-                  ? 'border-brand-cyan text-brand-cyan font-bold bg-brand-card/40'
-                  : 'border-transparent text-brand-muted hover:text-brand-text'
+                  ? 'border-brand-cyan text-brand-cyan font-bold bg-white'
+                  : 'border-transparent text-slate-500 hover:text-slate-900'
               }`}
             >
               <span>0{idx + 1}</span>
@@ -122,31 +122,31 @@ export function OverviewModal({ isOpen, onClose, onOpenQuoteModal }: OverviewMod
         <div className="p-6 sm:p-8 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             {/* Visual Frame */}
-            <div className="md:col-span-5 relative h-48 sm:h-56 rounded-xl overflow-hidden bg-brand-bg border border-brand-border">
+            <div className="md:col-span-5 relative h-48 sm:h-56 rounded-xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
               <Image
                 src={current.image}
                 alt={current.title}
                 fill
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-secondary/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent" />
             </div>
 
             {/* Narrative */}
             <div className="md:col-span-7 space-y-3">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-brand-cyan px-2 py-0.5 rounded bg-brand-cyan/10 border border-brand-cyan/20">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-brand-cyan px-2 py-0.5 rounded bg-sky-50 border border-sky-200 font-semibold">
                 {current.eyebrow}
               </span>
-              <h3 className="text-xl font-bold text-brand-text leading-snug">
+              <h3 className="text-xl font-bold text-slate-900 leading-snug">
                 {current.title}
               </h3>
-              <p className="text-xs sm:text-sm text-brand-muted leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 {current.description}
               </p>
 
               <div className="space-y-1.5 pt-2">
                 {current.features.map((feat, fIdx) => (
-                  <div key={fIdx} className="flex items-center gap-2 text-xs text-brand-text">
+                  <div key={fIdx} className="flex items-center gap-2 text-xs text-slate-700">
                     <CheckCircle className="w-3.5 h-3.5 text-brand-cyan shrink-0" />
                     <span>{feat}</span>
                   </div>
@@ -157,14 +157,14 @@ export function OverviewModal({ isOpen, onClose, onOpenQuoteModal }: OverviewMod
         </div>
 
         {/* Footer controls */}
-        <div className="p-4 sm:p-6 bg-brand-card border-t border-brand-border flex items-center justify-between">
+        <div className="p-4 sm:p-6 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
           <div className="flex items-center gap-2">
             {slides.map((_, idx) => (
               <span
                 key={idx}
                 onClick={() => setActiveTab(idx)}
                 className={`w-2.5 h-2.5 rounded-full cursor-pointer transition-all ${
-                  activeTab === idx ? 'bg-brand-cyan w-6' : 'bg-brand-border hover:bg-brand-muted'
+                  activeTab === idx ? 'bg-brand-cyan w-6' : 'bg-slate-300 hover:bg-slate-400'
                 }`}
               />
             ))}
@@ -174,7 +174,7 @@ export function OverviewModal({ isOpen, onClose, onOpenQuoteModal }: OverviewMod
             <button
               type="button"
               onClick={onClose}
-              className="text-xs text-brand-muted hover:text-brand-text px-3 py-1.5"
+              className="text-xs text-slate-600 hover:text-slate-900 px-3 py-1.5"
             >
               Close
             </button>
@@ -184,7 +184,7 @@ export function OverviewModal({ isOpen, onClose, onOpenQuoteModal }: OverviewMod
                 onClose();
                 onOpenQuoteModal();
               }}
-              className="px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm"
+              className="px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow-sm"
             >
               Consult an Engineer
             </button>

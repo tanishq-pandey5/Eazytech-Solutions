@@ -3,7 +3,7 @@ import './globals.css';
 import { COMPANY_DETAILS } from '@/data/companyData';
 
 export const viewport: Viewport = {
-  themeColor: '#071321',
+  themeColor: '#FFFFFF',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -198,7 +198,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="light scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -211,7 +211,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-brand-bg text-brand-text antialiased selection:bg-brand-cyan/20 selection:text-brand-cyan min-h-screen flex flex-col">
+      <body className="bg-brand-bg text-brand-text antialiased selection:bg-brand-cyan/15 selection:text-brand-cyan min-h-screen flex flex-col">
         {children}
       </body>
     </html>

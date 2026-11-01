@@ -204,7 +204,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#071321] text-brand-text flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       {/* Top Header */}
       <header className="border-b border-brand-border bg-brand-secondary/80 backdrop-blur-md px-6 py-4 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
@@ -469,7 +469,7 @@ export default function AdminPage() {
                       onClick={() => handleStatusChange(selectedEnquiry.id, st)}
                       className={`text-[10px] font-mono px-2.5 py-1 rounded border transition-all ${
                         selectedEnquiry.status === st
-                          ? 'bg-brand-cyan text-[#071321] font-bold border-brand-cyan shadow-cyan-glow-sm'
+                          ? 'bg-brand-cyan text-white font-bold border-brand-cyan shadow-sm'
                           : 'bg-brand-secondary text-brand-muted hover:text-brand-text border-brand-border'
                       }`}
                     >
@@ -585,7 +585,7 @@ export default function AdminPage() {
                   <button
                     type="button"
                     onClick={() => handleAddNote(selectedEnquiry.id)}
-                    className="px-3.5 py-2 rounded-lg bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover font-semibold text-xs transition-colors flex items-center gap-1.5"
+                    className="px-3.5 py-2 rounded-lg bg-brand-cyan text-white hover:bg-brand-cyan-hover font-semibold text-xs transition-colors flex items-center gap-1.5 shadow-sm"
                   >
                     <span>Add</span>
                     <Send className="w-3 h-3" />

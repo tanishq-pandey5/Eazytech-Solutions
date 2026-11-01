@@ -130,21 +130,21 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
         </div>
 
         {/* Category Tabs: Products & Solutions vs Technical Services */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-8 mb-4 border-b border-brand-border/40">
-          <div className="inline-flex p-1.5 rounded-xl bg-brand-secondary/80 border border-brand-border/80 backdrop-blur-sm">
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-8 mb-4 border-b border-slate-200">
+          <div className="inline-flex p-1.5 rounded-xl bg-slate-100 border border-slate-200">
             <button
               type="button"
               onClick={() => setActiveTab('all')}
               className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 flex items-center gap-2 ${
                 activeTab === 'all'
-                  ? 'bg-brand-cyan text-[#071321] shadow-cyan-glow-sm'
-                  : 'text-brand-muted hover:text-brand-text hover:bg-brand-card/50'
+                  ? 'bg-brand-cyan text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
               }`}
             >
               <span>All Offerings</span>
               <span
                 className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
-                  activeTab === 'all' ? 'bg-[#071321]/20 text-[#071321]' : 'bg-brand-card text-brand-muted'
+                  activeTab === 'all' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
                 }`}
               >
                 12
@@ -156,15 +156,15 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
               onClick={() => setActiveTab('products')}
               className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 flex items-center gap-2 ${
                 activeTab === 'products'
-                  ? 'bg-brand-cyan text-[#071321] shadow-cyan-glow-sm'
-                  : 'text-brand-muted hover:text-brand-text hover:bg-brand-card/50'
+                  ? 'bg-brand-cyan text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
               }`}
             >
               <Package className="w-3.5 h-3.5" />
               <span>Products & Solutions</span>
               <span
                 className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
-                  activeTab === 'products' ? 'bg-[#071321]/20 text-[#071321]' : 'bg-brand-card text-brand-muted'
+                  activeTab === 'products' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
                 }`}
               >
                 6
@@ -176,15 +176,15 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
               onClick={() => setActiveTab('services')}
               className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all duration-200 flex items-center gap-2 ${
                 activeTab === 'services'
-                  ? 'bg-brand-cyan text-[#071321] shadow-cyan-glow-sm'
-                  : 'text-brand-muted hover:text-brand-text hover:bg-brand-card/50'
+                  ? 'bg-brand-cyan text-white shadow-sm'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
               }`}
             >
               <Wrench className="w-3.5 h-3.5" />
               <span>Technical Services</span>
               <span
                 className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full ${
-                  activeTab === 'services' ? 'bg-[#071321]/20 text-[#071321]' : 'bg-brand-card text-brand-muted'
+                  activeTab === 'services' ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-700'
                 }`}
               >
                 6
@@ -192,7 +192,7 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
             </button>
           </div>
 
-          <div className="hidden lg:flex items-center gap-4 text-xs font-mono text-brand-muted">
+          <div className="hidden lg:flex items-center gap-4 text-xs font-mono text-slate-500">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-brand-cyan" />
               <span>Hardware & Cables</span>
@@ -215,17 +215,17 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
               {/* Left Column: DC Cables Showcase Info & 3 Product Categories */}
               <div className="lg:col-span-6 space-y-6">
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="text-[11px] font-mono uppercase px-3 py-1 rounded-full bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/40 font-semibold tracking-wider">
+                  <span className="text-[11px] font-mono uppercase px-3 py-1 rounded-full bg-sky-50 text-brand-cyan border border-brand-cyan/40 font-semibold tracking-wider">
                     MAIN CABLE PRODUCT SHOWCASE
                   </span>
-                  <span className="text-[11px] font-mono uppercase px-2.5 py-1 rounded-full bg-brand-secondary text-brand-muted border border-brand-border">
+                  <span className="text-[11px] font-mono uppercase px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
                     Power Distribution Solutions
                   </span>
                 </div>
 
                 <div>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-text tracking-tight">
-                    DC Cables & Industrial Cabling
+                    DC Cables &amp; Industrial Cabling
                   </h3>
                   <p className="text-sm text-brand-muted mt-2 leading-relaxed">
                     Heavy-duty flexible DC power cables engineered specifically for low voltage-drop connections
@@ -249,20 +249,20 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                       }}
                       className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start justify-between gap-3 ${
                         activeCableIndex === 0
-                          ? 'bg-brand-secondary border-brand-cyan/60 shadow-cyan-glow-sm'
-                          : 'bg-brand-secondary/50 border-brand-border/60 hover:border-brand-border hover:bg-brand-secondary/80'
+                          ? 'bg-white border-brand-cyan ring-2 ring-brand-cyan/20 shadow-sm'
+                          : 'bg-white/70 border-slate-200 hover:border-slate-300 hover:bg-white'
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
+                        <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
                           <Layers className="w-4 h-4" />
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <h4 className="text-sm font-bold text-brand-text">1. DC Cables</h4>
+                            <h4 className="text-sm font-bold text-slate-900">1. DC Cables</h4>
                             <span className="text-[10px] font-mono text-brand-cyan">Active View</span>
                           </div>
-                          <p className="text-xs text-brand-muted mt-0.5">
+                          <p className="text-xs text-slate-600 mt-0.5">
                             DC power cable solutions.
                           </p>
                         </div>
@@ -278,25 +278,25 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                       }}
                       className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start justify-between gap-3 ${
                         activeCableIndex === 1
-                          ? 'bg-brand-secondary border-brand-cyan/60 shadow-cyan-glow-sm'
-                          : 'bg-brand-secondary/50 border-brand-border/60 hover:border-brand-border hover:bg-brand-secondary/80'
+                          ? 'bg-white border-brand-cyan ring-2 ring-brand-cyan/20 shadow-sm'
+                          : 'bg-white/70 border-slate-200 hover:border-slate-300 hover:bg-white'
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
+                        <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
                           <ShieldAlert className="w-4 h-4" />
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <h4 className="text-sm font-bold text-brand-text">2. Uninyvin Cables</h4>
-                            <span className="text-[10px] font-mono text-brand-muted/80">Heat & Oil Resistant</span>
+                            <h4 className="text-sm font-bold text-slate-900">2. Uninyvin Cables</h4>
+                            <span className="text-[10px] font-mono text-slate-500">Heat &amp; Oil Resistant</span>
                           </div>
-                          <p className="text-xs text-brand-muted mt-0.5">
+                          <p className="text-xs text-slate-600 mt-0.5">
                             Specialized Uninyvin cable solutions.
                           </p>
                         </div>
                       </div>
-                      <Eye className="w-4 h-4 text-brand-muted hover:text-brand-cyan shrink-0 mt-1" />
+                      <Eye className="w-4 h-4 text-slate-400 hover:text-brand-cyan shrink-0 mt-1" />
                     </div>
 
                     {/* Category 3: Miracle Cables */}
@@ -307,25 +307,25 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                       }}
                       className={`p-3.5 rounded-xl border transition-all cursor-pointer flex items-start justify-between gap-3 ${
                         activeCableIndex === 2
-                          ? 'bg-brand-secondary border-brand-cyan/60 shadow-cyan-glow-sm'
-                          : 'bg-brand-secondary/50 border-brand-border/60 hover:border-brand-border hover:bg-brand-secondary/80'
+                          ? 'bg-white border-brand-cyan ring-2 ring-brand-cyan/20 shadow-sm'
+                          : 'bg-white/70 border-slate-200 hover:border-slate-300 hover:bg-white'
                       }`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
+                        <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0 text-brand-cyan mt-0.5">
                           <Sparkles className="w-4 h-4" />
                         </div>
                         <div>
                           <div className="flex items-center gap-2">
-                            <h4 className="text-sm font-bold text-brand-text">3. Miracle Cables</h4>
-                            <span className="text-[10px] font-mono text-brand-muted/80">Ultra-Flexible</span>
+                            <h4 className="text-sm font-bold text-slate-900">3. Miracle Cables</h4>
+                            <span className="text-[10px] font-mono text-slate-500">Ultra-Flexible</span>
                           </div>
-                          <p className="text-xs text-brand-muted mt-0.5">
+                          <p className="text-xs text-slate-600 mt-0.5">
                             Miracle cable products and solutions.
                           </p>
                         </div>
                       </div>
-                      <Eye className="w-4 h-4 text-brand-muted hover:text-brand-cyan shrink-0 mt-1" />
+                      <Eye className="w-4 h-4 text-slate-400 hover:text-brand-cyan shrink-0 mt-1" />
                     </div>
                   </div>
                 </div>
@@ -335,7 +335,7 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                   <button
                     type="button"
                     onClick={() => onSelectService(dcCableProduct)}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow-sm transition-all"
                   >
                     <span>View Technical Specifications</span>
                     <ArrowRight className="w-4 h-4" />
@@ -344,7 +344,7 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                   <button
                     type="button"
                     onClick={() => onOpenQuoteModal('DC Cables')}
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-xs font-semibold text-brand-text bg-brand-secondary border border-brand-border hover:border-brand-cyan/60 transition-all"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full text-xs font-semibold text-slate-800 bg-white border border-slate-200 hover:border-brand-cyan/60 hover:bg-slate-50 shadow-sm transition-all"
                   >
                     <span>Request Cable Quotation</span>
                   </button>
@@ -353,7 +353,7 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
 
               {/* Right Column: Interactive Cable Carousel & Gallery */}
               <div className="lg:col-span-6 flex flex-col items-center">
-                <div className="w-full relative rounded-2xl overflow-hidden bg-brand-secondary border border-brand-border shadow-xl group">
+                <div className="w-full relative rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-md group">
                   {/* Image Viewport */}
                   <div className="relative h-72 sm:h-84 md:h-96 w-full">
                     <Image
@@ -364,13 +364,13 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                       priority
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#071321] via-transparent to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80" />
 
                     {/* Navigation Arrows */}
                     <button
                       type="button"
                       onClick={handlePrevCable}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#071321]/80 border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-cyan hover:border-brand-cyan transition-all backdrop-blur-sm"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-slate-200 flex items-center justify-center text-slate-800 hover:text-brand-cyan hover:border-brand-cyan transition-all shadow-md backdrop-blur-sm"
                       aria-label="Previous cable image"
                     >
                       <ChevronLeft className="w-5 h-5" />
@@ -378,24 +378,24 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                     <button
                       type="button"
                       onClick={handleNextCable}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-[#071321]/80 border border-brand-border flex items-center justify-center text-brand-text hover:text-brand-cyan hover:border-brand-cyan transition-all backdrop-blur-sm"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-slate-200 flex items-center justify-center text-slate-800 hover:text-brand-cyan hover:border-brand-cyan transition-all shadow-md backdrop-blur-sm"
                       aria-label="Next cable image"
                     >
                       <ChevronRight className="w-5 h-5" />
                     </button>
 
                     {/* Active Caption Overlay */}
-                    <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-brand-card/90 border border-brand-border/80 backdrop-blur-md flex items-center justify-between">
+                    <div className="absolute bottom-4 left-4 right-4 p-3 rounded-xl bg-white/95 border border-slate-200 backdrop-blur-md shadow-md flex items-center justify-between">
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-brand-cyan/20 text-brand-cyan font-semibold">
+                          <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-sky-50 text-brand-cyan font-semibold border border-sky-200">
                             {currentCable.tag}
                           </span>
-                          <span className="text-[11px] font-mono text-brand-muted">
+                          <span className="text-[11px] font-mono text-slate-500">
                             {currentCable.category}
                           </span>
                         </div>
-                        <h5 className="text-sm font-bold text-brand-text mt-1">
+                        <h5 className="text-sm font-bold text-slate-900 mt-1">
                           {currentCable.title}
                         </h5>
                       </div>
@@ -415,8 +415,8 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                       onClick={() => setActiveCableIndex(idx)}
                       className={`relative h-16 rounded-xl overflow-hidden border transition-all cursor-pointer ${
                         activeCableIndex === idx
-                          ? 'border-brand-cyan ring-2 ring-brand-cyan/30'
-                          : 'border-brand-border/70 opacity-60 hover:opacity-100 hover:border-brand-border'
+                          ? 'border-brand-cyan ring-2 ring-brand-cyan/40 scale-105'
+                          : 'border-slate-200 opacity-70 hover:opacity-100 hover:border-slate-300'
                       }`}
                     >
                       <Image
@@ -442,7 +442,7 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
               <div
                 key={item.id}
                 onClick={() => onSelectService(item)}
-                className="group relative rounded-2xl bg-brand-card/90 border border-brand-border/80 hover:border-brand-cyan/60 hover:shadow-cyan-glow-sm transition-all duration-300 flex overflow-hidden cursor-pointer"
+                className="group relative rounded-2xl bg-white border border-slate-200 hover:border-brand-cyan/60 hover:shadow-lg transition-all duration-300 flex overflow-hidden cursor-pointer"
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
@@ -458,15 +458,15 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                   <div className="space-y-3">
                     {/* Category Pill & Icon */}
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-brand-secondary border border-brand-border flex items-center justify-center shrink-0 group-hover:border-brand-cyan/40 group-hover:scale-105 transition-all">
+                      <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center shrink-0 group-hover:border-brand-cyan/40 group-hover:scale-105 transition-all">
                         {getIcon(item.icon)}
                       </div>
 
                       <span
                         className={`text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full font-semibold border ${
                           isProduct
-                            ? 'bg-brand-cyan/15 text-brand-cyan border-brand-cyan/30'
-                            : 'bg-sky-400/15 text-[#56E0F8] border-sky-400/30'
+                            ? 'bg-sky-50 text-brand-cyan border-sky-200'
+                            : 'bg-emerald-50 text-emerald-700 border-emerald-200'
                         }`}
                       >
                         {isProduct ? 'Product' : 'Service'}
@@ -474,12 +474,12 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-base sm:text-lg font-bold text-brand-text group-hover:text-brand-cyan transition-colors leading-snug pt-1">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-brand-cyan transition-colors leading-snug pt-1">
                       {item.title}
                     </h3>
 
                     {/* Short Description */}
-                    <p className="text-xs sm:text-sm text-brand-muted line-clamp-3 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
                       {item.shortDescription}
                     </p>
                   </div>
@@ -487,22 +487,22 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                   {/* Learn More / Arrow trigger */}
                   <div className="pt-6 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="w-8 h-8 rounded-full bg-brand-secondary/80 border border-brand-border flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan group-hover:text-[#071321] group-hover:border-brand-cyan transition-all duration-200">
+                      <span className="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan group-hover:text-white group-hover:border-brand-cyan transition-all duration-200">
                         <ArrowRight className="w-3.5 h-3.5" />
                       </span>
-                      <span className="text-xs font-semibold text-brand-muted group-hover:text-brand-text transition-colors">
+                      <span className="text-xs font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">
                         Learn More
                       </span>
                     </div>
 
-                    <span className="text-[11px] font-mono text-brand-muted/60 group-hover:text-brand-cyan/80 transition-colors">
+                    <span className="text-[11px] font-mono text-slate-400 group-hover:text-brand-cyan transition-colors">
                       {item.tag}
                     </span>
                   </div>
                 </div>
 
                 {/* Right side image container */}
-                <div className="w-32 sm:w-36 relative shrink-0 overflow-hidden bg-brand-secondary/40 border-l border-brand-border/40">
+                <div className="w-32 sm:w-36 relative shrink-0 overflow-hidden bg-slate-100 border-l border-slate-100">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -511,7 +511,7 @@ export function ServicesSection({ onSelectService, onOpenQuoteModal }: ServicesS
                     sizes="(max-width: 768px) 120px, 150px"
                   />
                   {/* Subtle vertical gradient blending */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-brand-card via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent opacity-80" />
                 </div>
               </div>
             );

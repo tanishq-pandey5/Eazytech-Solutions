@@ -29,12 +29,12 @@ export function AboutSection({ onOpenQuoteModal }: AboutSectionProps) {
   ];
 
   return (
-    <section id="about" className="py-24 bg-brand-bg relative overflow-hidden border-t border-brand-border/40">
+    <section id="about" className="py-24 bg-white relative overflow-hidden border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Image & Calibrated Instruments Visual */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-xl">
               <div className="relative h-96 w-full">
                 <Image
                   src="/images/service-power-quality-hd.jpg"
@@ -42,20 +42,20 @@ export function AboutSection({ onOpenQuoteModal }: AboutSectionProps) {
                   fill
                   className="object-cover object-center brightness-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071321] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
               </div>
 
               {/* Floating SLA Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-brand-secondary/90 border border-brand-border/80 backdrop-blur-md">
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 border border-slate-200 text-slate-800 backdrop-blur-md shadow-lg">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-brand-card border border-brand-border flex items-center justify-center shrink-0 text-brand-cyan">
+                  <div className="w-10 h-10 rounded-lg bg-sky-50 border border-brand-cyan/30 flex items-center justify-center shrink-0 text-brand-cyan">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-brand-text">
+                    <h4 className="text-sm font-bold text-slate-900">
                       Predictive Maintenance SLA
                     </h4>
-                    <p className="text-xs text-brand-muted">
+                    <p className="text-xs text-slate-600">
                       Condition-based testing with calibrated micro-ohmmeters & thermal cameras.
                     </p>
                   </div>
@@ -73,7 +73,7 @@ export function AboutSection({ onOpenQuoteModal }: AboutSectionProps) {
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-text tracking-tight leading-tight">
               Preventive Precision. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-[#1EA3C4]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-sky-800">
                 Stopping Failures Before They Happen.
               </span>
             </h2>
@@ -90,16 +90,16 @@ export function AboutSection({ onOpenQuoteModal }: AboutSectionProps) {
               {metrics.map((m, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-xl bg-brand-card/80 border border-brand-border/70 flex flex-col justify-between"
+                  className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col justify-between shadow-sm"
                 >
                   <span className="text-xl sm:text-2xl font-black font-mono text-brand-cyan">
                     {m.value}
                   </span>
                   <div>
-                    <span className="text-[10px] font-mono font-bold uppercase text-brand-text block mt-1">
+                    <span className="text-[10px] font-mono font-bold uppercase text-slate-900 block mt-1">
                       {m.label}
                     </span>
-                    <span className="text-[10px] text-brand-muted block mt-0.5">
+                    <span className="text-[10px] text-slate-500 block mt-0.5">
                       {m.desc}
                     </span>
                   </div>

@@ -22,20 +22,20 @@ export function Footer({
   };
 
   return (
-    <footer id="footer" className="bg-[#050D17] border-t border-[rgba(115,160,190,0.18)] pt-16 pb-12 relative overflow-hidden">
+    <footer id="footer" className="bg-slate-50 border-t border-slate-200 pt-16 pb-12 relative overflow-hidden text-slate-600">
       {/* Subtle top light bar */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-brand-border/40">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-12 border-b border-slate-200">
           {/* Col 1: Brand & Positioning (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <Logo size="md" showSubtitle={true} />
-            <p className="text-xs sm:text-sm text-brand-muted leading-relaxed pt-2">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pt-2">
               End-to-End Critical Power Service Provider. Delivering reliable UPS systems, battery
               banks, industrial cables, power audits, maintenance, testing, and consultancy across India.
             </p>
-            <div className="pt-2 text-xs text-brand-muted/80 font-mono">
+            <div className="pt-2 text-xs text-slate-500 font-mono">
               <span className="text-brand-cyan font-semibold">GSTIN:</span> {COMPANY_DETAILS.gstin}
               <br />
               <span className="text-brand-cyan font-semibold">Jurisdiction:</span> {COMPANY_DETAILS.stateJurisdiction}
@@ -44,10 +44,10 @@ export function Footer({
 
           {/* Col 2: Quick Links (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold text-brand-text tracking-wider uppercase font-mono">
+            <h4 className="text-xs font-bold text-slate-900 tracking-wider uppercase font-mono">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs text-brand-muted">
+            <ul className="space-y-2 text-xs text-slate-600">
               <li>
                 <Link href="#home" className="hover:text-brand-cyan transition-colors">
                   Home
@@ -88,10 +88,10 @@ export function Footer({
 
           {/* Col 3: Products & Solutions (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold text-brand-text tracking-wider uppercase font-mono">
+            <h4 className="text-xs font-bold text-slate-900 tracking-wider uppercase font-mono">
               Products
             </h4>
-            <ul className="space-y-2 text-xs text-brand-muted">
+            <ul className="space-y-2 text-xs text-slate-600">
               {PRODUCTS_LIST.map((p) => (
                 <li key={p.id}>
                   <button
@@ -108,10 +108,10 @@ export function Footer({
 
           {/* Col 4: Technical Services (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-bold text-brand-text tracking-wider uppercase font-mono">
+            <h4 className="text-xs font-bold text-slate-900 tracking-wider uppercase font-mono">
               Services
             </h4>
-            <ul className="space-y-2 text-xs text-brand-muted">
+            <ul className="space-y-2 text-xs text-slate-600">
               {SERVICES_LIST.map((s) => (
                 <li key={s.id}>
                   <button
@@ -128,10 +128,10 @@ export function Footer({
 
           {/* Col 5: Contact Information (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-bold text-brand-text tracking-wider uppercase font-mono">
+            <h4 className="text-xs font-bold text-slate-900 tracking-wider uppercase font-mono">
               Contact & SLA Desk
             </h4>
-            <div className="space-y-3 text-xs text-brand-muted">
+            <div className="space-y-3 text-xs text-slate-600">
               {/* Address */}
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-cyan shrink-0 mt-0.5" />
@@ -163,7 +163,7 @@ export function Footer({
               </div>
 
               <div className="pt-2">
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-brand-card border border-brand-border text-[11px] font-mono text-brand-cyan">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white border border-slate-200 text-[11px] font-mono text-brand-cyan shadow-sm">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   <span>24/7 Breakdown Response SLA</span>
                 </div>
@@ -173,7 +173,7 @@ export function Footer({
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-muted/70 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <div>
             <p>© {new Date().getFullYear()} Eazy Tech Solutions. All rights reserved.</p>
           </div>
@@ -182,23 +182,23 @@ export function Footer({
             <button
               type="button"
               onClick={onOpenPrivacyModal}
-              className="hover:text-brand-text transition-colors"
+              className="hover:text-slate-900 transition-colors"
             >
               Privacy Policy
             </button>
-            <span className="text-brand-border">|</span>
+            <span className="text-slate-300">|</span>
             <button
               type="button"
               onClick={onOpenTermsModal}
-              className="hover:text-brand-text transition-colors"
+              className="hover:text-slate-900 transition-colors"
             >
               Terms of Service
             </button>
-            <span className="text-brand-border">|</span>
-            <Link href="/sitemap.xml" className="hover:text-brand-text transition-colors">
+            <span className="text-slate-300">|</span>
+            <Link href="/sitemap.xml" className="hover:text-slate-900 transition-colors">
               Sitemap
             </Link>
-            <span className="text-brand-border">|</span>
+            <span className="text-slate-300">|</span>
             <Link href="/admin" className="hover:text-brand-cyan transition-colors font-mono text-[11px]">
               Lead Hub
             </Link>
@@ -208,7 +208,7 @@ export function Footer({
           <button
             type="button"
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-brand-card border border-brand-border hover:border-brand-cyan/60 hover:text-brand-cyan text-brand-muted transition-colors text-xs font-mono"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-brand-cyan hover:text-brand-cyan text-slate-600 transition-colors text-xs font-mono shadow-sm"
             aria-label="Back to top of page"
           >
             <span>Top</span>

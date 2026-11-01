@@ -13,40 +13,40 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<{ succe
   const hasSmtpConfig = Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 
   const teamEmailHtml = `
-    <div style="font-family: Arial, sans-serif; background-color: #071321; color: #F4F7FB; padding: 24px; border-radius: 8px;">
-      <div style="border-bottom: 2px solid #36D7F5; padding-bottom: 12px; margin-bottom: 16px;">
-        <h2 style="color: #36D7F5; margin: 0;">New Critical Power Enquiry</h2>
-        <p style="color: #B7C5D6; margin: 4px 0 0 0; font-size: 13px;">Reference ID: <strong>${enquiry.id}</strong> • Submitted: ${new Date(enquiry.createdAt).toLocaleString('en-IN')}</p>
+    <div style="font-family: Arial, sans-serif; background-color: #FFFFFF; color: #0F172A; padding: 24px; border-radius: 8px; border: 1px solid #E2E8F0;">
+      <div style="border-bottom: 2px solid #0284C7; padding-bottom: 12px; margin-bottom: 16px;">
+        <h2 style="color: #0284C7; margin: 0;">New Critical Power Enquiry</h2>
+        <p style="color: #475569; margin: 4px 0 0 0; font-size: 13px;">Reference ID: <strong>${enquiry.id}</strong> • Submitted: ${new Date(enquiry.createdAt).toLocaleString('en-IN')}</p>
       </div>
 
-      <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #F4F7FB;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 14px; color: #0F172A;">
         <tr>
-          <td style="padding: 8px; color: #36D7F5; font-weight: bold; width: 180px;">Client Name:</td>
-          <td style="padding: 8px; background-color: #101F30;">${enquiry.fullName}</td>
+          <td style="padding: 8px; color: #0284C7; font-weight: bold; width: 180px;">Client Name:</td>
+          <td style="padding: 8px; background-color: #F8FAFC;">${enquiry.fullName}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; color: #36D7F5; font-weight: bold;">Business Email:</td>
-          <td style="padding: 8px; background-color: #0B1827;"><a href="mailto:${enquiry.businessEmail}" style="color: #36D7F5;">${enquiry.businessEmail}</a></td>
+          <td style="padding: 8px; color: #0284C7; font-weight: bold;">Business Email:</td>
+          <td style="padding: 8px; background-color: #FFFFFF;"><a href="mailto:${enquiry.businessEmail}" style="color: #0284C7;">${enquiry.businessEmail}</a></td>
         </tr>
         <tr>
-          <td style="padding: 8px; color: #36D7F5; font-weight: bold;">Company / Org:</td>
-          <td style="padding: 8px; background-color: #101F30;">${enquiry.companyName || 'Not specified'}</td>
+          <td style="padding: 8px; color: #0284C7; font-weight: bold;">Company / Org:</td>
+          <td style="padding: 8px; background-color: #F8FAFC;">${enquiry.companyName || 'Not specified'}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; color: #36D7F5; font-weight: bold;">Phone Number:</td>
-          <td style="padding: 8px; background-color: #0B1827;">${enquiry.phoneNumber ? `<a href="tel:${enquiry.phoneNumber}" style="color: #F4F7FB;">${enquiry.phoneNumber}</a>` : 'Not specified'}</td>
+          <td style="padding: 8px; color: #0284C7; font-weight: bold;">Phone Number:</td>
+          <td style="padding: 8px; background-color: #FFFFFF;">${enquiry.phoneNumber ? `<a href="tel:${enquiry.phoneNumber}" style="color: #0F172A;">${enquiry.phoneNumber}</a>` : 'Not specified'}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; color: #36D7F5; font-weight: bold;">Service Required:</td>
-          <td style="padding: 8px; background-color: #101F30; font-weight: bold; color: #36D7F5;">${enquiry.serviceRequired}</td>
+          <td style="padding: 8px; color: #0284C7; font-weight: bold;">Service Required:</td>
+          <td style="padding: 8px; background-color: #F8FAFC; font-weight: bold; color: #0284C7;">${enquiry.serviceRequired}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; color: #36D7F5; font-weight: bold;">Site Location:</td>
-          <td style="padding: 8px; background-color: #0B1827;">${enquiry.siteLocation || 'Not specified'}</td>
+          <td style="padding: 8px; color: #0284C7; font-weight: bold;">Site Location:</td>
+          <td style="padding: 8px; background-color: #FFFFFF;">${enquiry.siteLocation || 'Not specified'}</td>
         </tr>
         <tr>
-          <td style="padding: 8px; color: #36D7F5; font-weight: bold;">Equipment Model / Sizing:</td>
-          <td style="padding: 8px; background-color: #101F30;">${enquiry.equipmentModel || 'Not specified'}</td>
+          <td style="padding: 8px; color: #0284C7; font-weight: bold;">Equipment Model / Sizing:</td>
+          <td style="padding: 8px; background-color: #F8FAFC;">${enquiry.equipmentModel || 'Not specified'}</td>
         </tr>
       </table>
 

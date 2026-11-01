@@ -26,9 +26,9 @@ export function CtaSection({ onOpenQuoteModal }: CtaSectionProps) {
   };
 
   return (
-    <section id="contact-cta" className="py-20 bg-brand-bg relative overflow-hidden">
+    <section id="contact-cta" className="py-20 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="relative rounded-3xl overflow-hidden border border-brand-border bg-brand-card shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl">
           {/* Background Datacenter Image */}
           <div className="absolute inset-0 z-0">
             <Image
@@ -37,9 +37,9 @@ export function CtaSection({ onOpenQuoteModal }: CtaSectionProps) {
               fill
               className="object-cover object-center brightness-40 contrast-125"
             />
-            {/* Dark Navy and Cyan Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#071321] via-[#071321]/90 to-[#071321]/60" />
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-cyan/15 via-transparent to-transparent" />
+            {/* Dark Slate and Cyan Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/95 to-slate-900/70" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-cyan/20 via-transparent to-transparent" />
           </div>
 
           {/* Foreground Grid */}
@@ -51,14 +51,14 @@ export function CtaSection({ onOpenQuoteModal }: CtaSectionProps) {
                 <span>Let&apos;s Discuss Your Requirements</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-text tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
                 Let&apos;s Build a More <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-[#56E0F8] to-[#1EA3C4]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-sky-300 to-sky-100">
                   Reliable Power Infrastructure.
                 </span>
               </h2>
 
-              <p className="text-base text-brand-muted max-w-xl leading-relaxed">
+              <p className="text-base text-slate-300 max-w-xl leading-relaxed">
                 Connect with our technical team for UPS systems, battery solutions, specialized power cables,
                 power audits, load studies, battery testing, maintenance contracts, or repairs.
               </p>
@@ -67,7 +67,7 @@ export function CtaSection({ onOpenQuoteModal }: CtaSectionProps) {
                 <button
                   type="button"
                   onClick={() => onOpenQuoteModal()}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow transition-all active:scale-95"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow transition-all active:scale-95"
                 >
                   <span>Request a Quote</span>
                   <ArrowRight className="w-4 h-4" />
@@ -75,7 +75,7 @@ export function CtaSection({ onOpenQuoteModal }: CtaSectionProps) {
 
                 <a
                   href={`tel:${COMPANY_DETAILS.phoneRaw}`}
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-brand-text bg-brand-card/80 border border-brand-border hover:border-brand-cyan/60 hover:bg-brand-card-hover transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full text-sm font-semibold text-white bg-slate-800/80 border border-slate-700 hover:border-brand-cyan/60 hover:bg-slate-800 transition-all"
                 >
                   <PhoneCall className="w-4 h-4 text-brand-cyan" />
                   <span>Call {COMPANY_DETAILS.contactPhone}</span>

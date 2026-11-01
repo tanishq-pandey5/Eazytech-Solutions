@@ -34,7 +34,7 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
     >
       {/* Geometric E Monogram Icon */}
       <div
-        className={`${iconSizes[size]} bg-gradient-to-br from-[#45E3FF] via-[#36D7F5] to-[#1EA3C4] flex items-center justify-center p-1.5 shadow-cyan-glow-sm transition-transform duration-300 group-hover:scale-105 shrink-0`}
+        className={`${iconSizes[size]} bg-gradient-to-br from-[#0284C7] via-[#0369A1] to-[#075985] flex items-center justify-center p-1.5 shadow-sm transition-transform duration-300 group-hover:scale-105 shrink-0`}
       >
         <svg
           viewBox="0 0 24 24"
@@ -46,10 +46,10 @@ export function Logo({ className = "", showSubtitle = true, size = "md" }: LogoP
           {/* Stylized Modern Industrial E Monogram */}
           <path
             d="M5 4.5H19C19.5523 4.5 20 4.94772 20 5.5V7C20 7.55228 19.5523 8 19 8H9V10.5H17C17.5523 10.5 18 10.9477 18 11.5V13C18 13.5523 17.5523 14 17 14H9V16.5H19C19.5523 16.5 20 16.9477 20 17.5V19C20 19.5523 19.5523 20 19 20H5C4.44772 20 4 19.5523 4 19V5.5C4 4.94772 4.44772 4.5 5 4.5Z"
-            fill="#071321"
+            fill="#FFFFFF"
           />
           {/* Subtle Power Accent Dot */}
-          <circle cx="15.5" cy="12.25" r="1.25" fill="#36D7F5" />
+          <circle cx="15.5" cy="12.25" r="1.25" fill="#7DD3FC" />
         </svg>
       </div>
 

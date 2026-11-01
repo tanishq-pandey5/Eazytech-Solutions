@@ -67,7 +67,7 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
   };
 
   return (
-    <section id="resources" className="py-20 bg-brand-bg relative overflow-hidden border-t border-brand-border/40">
+    <section id="resources" className="py-20 bg-white relative overflow-hidden border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div className="space-y-3">
@@ -76,7 +76,7 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
               <span>Engineering Resources</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-text tracking-tight leading-tight">
-              Technical Documentation & <br className="hidden sm:inline" />
+              Technical Documentation &amp; <br className="hidden sm:inline" />
               Engineering Standards.
             </h2>
           </div>
@@ -97,28 +97,28 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-brand-card/80 border border-brand-border hover:border-brand-cyan/60 hover:shadow-cyan-glow-sm transition-all duration-300 flex flex-col justify-between"
+                className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-brand-cyan/60 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-brand-cyan px-2 py-0.5 rounded bg-brand-cyan/10 border border-brand-cyan/20">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-brand-cyan px-2 py-0.5 rounded bg-sky-50 border border-sky-200 font-semibold">
                       {item.category}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-brand-secondary border border-brand-border flex items-center justify-center text-brand-cyan">
+                    <div className="w-8 h-8 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-brand-cyan">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="text-base font-bold text-brand-text mb-2">
+                  <h3 className="text-base font-bold text-slate-900 mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-brand-muted leading-relaxed mb-6">
+                  <p className="text-xs text-slate-600 leading-relaxed mb-6">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-brand-border/60 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-brand-muted/70">
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-slate-500">
                     {item.size}
                   </span>
                   <button
@@ -143,17 +143,17 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
           role="dialog"
           aria-modal="true"
         >
-          <div className="fixed inset-0 bg-black/80 backdrop-blur-md" onClick={handleCloseModal} />
+          <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-md" onClick={handleCloseModal} />
 
-          <div className="relative w-full max-w-md bg-brand-secondary border border-brand-border rounded-2xl p-6 sm:p-8 z-10 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-brand-border">
-              <span className="text-xs font-mono uppercase text-brand-cyan">
+          <div className="relative w-full max-w-md bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 z-10 space-y-4 shadow-2xl text-slate-900">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+              <span className="text-xs font-mono uppercase text-brand-cyan font-bold">
                 Instant Technical Brief
               </span>
               <button
                 type="button"
                 onClick={handleCloseModal}
-                className="p-1 rounded-lg text-brand-muted hover:text-brand-text bg-brand-card border border-brand-border"
+                className="p-1 rounded-lg text-slate-500 hover:text-slate-900 bg-slate-100 border border-slate-200"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -161,18 +161,18 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
 
             {requestSuccess ? (
               <div className="text-center py-4 space-y-3">
-                <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 border border-emerald-300 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h4 className="text-lg font-bold text-brand-text">Access Granted</h4>
-                <p className="text-xs text-brand-muted leading-relaxed">
+                <h4 className="text-lg font-bold text-slate-900">Access Granted</h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
                   Your request for <strong>{selectedResource}</strong> has been logged in our engineering repository. A copy has been dispatched to <strong>{requestEmail}</strong>.
                 </p>
                 <div className="pt-2">
                   <button
                     type="button"
                     onClick={handleCloseModal}
-                    className="px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321]"
+                    className="px-6 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow-sm"
                   >
                     Done
                   </button>
@@ -180,13 +180,13 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
               </div>
             ) : (
               <form onSubmit={handleResourceSubmit} className="space-y-4">
-                <p className="text-xs text-brand-muted leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   Enter your business email to receive the engineering specification for{' '}
-                  <strong className="text-brand-text">{selectedResource}</strong>.
+                  <strong className="text-slate-900">{selectedResource}</strong>.
                 </p>
 
                 <div>
-                  <label className="block text-[11px] font-mono uppercase text-brand-muted mb-1">
+                  <label className="block text-[11px] font-mono uppercase text-slate-600 mb-1">
                     Your Name (Optional)
                   </label>
                   <input
@@ -194,12 +194,12 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
                     value={requestName}
                     onChange={(e) => setRequestName(e.target.value)}
                     placeholder="e.g. Amit Saxena"
-                    className="w-full px-3 py-2 rounded-lg bg-brand-card border border-brand-border text-xs text-brand-text focus:outline-none focus:border-brand-cyan"
+                    className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-cyan focus:bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-mono uppercase text-brand-muted mb-1">
+                  <label className="block text-[11px] font-mono uppercase text-slate-600 mb-1">
                     Business Email <span className="text-brand-cyan">*</span>
                   </label>
                   <input
@@ -208,7 +208,7 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
                     value={requestEmail}
                     onChange={(e) => setRequestEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full px-3 py-2 rounded-lg bg-brand-card border border-brand-border text-xs text-brand-text focus:outline-none focus:border-brand-cyan"
+                    className="w-full px-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand-cyan focus:bg-white"
                   />
                 </div>
 
@@ -216,14 +216,14 @@ export function ResourcesSection({ onOpenQuoteModal }: ResourcesSectionProps) {
                   <button
                     type="button"
                     onClick={handleCloseModal}
-                    className="px-4 py-2 rounded-full text-xs text-brand-muted hover:text-brand-text"
+                    className="px-4 py-2 rounded-full text-xs text-slate-600 hover:text-slate-900"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm disabled:opacity-50"
+                    className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow-sm disabled:opacity-50"
                   >
                     {isSubmitting ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : null}
                     <span>Send Technical Brief</span>

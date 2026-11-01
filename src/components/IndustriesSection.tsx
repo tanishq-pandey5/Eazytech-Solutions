@@ -83,7 +83,7 @@ export function IndustriesSection({ onOpenQuoteModal }: IndustriesSectionProps) 
               />
 
               {/* Gradient Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071321] via-[#071321]/70 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/75 to-transparent" />
 
               {/* Card Foreground Content */}
               <div className="relative p-6 z-10 flex items-center justify-between gap-3">
@@ -101,7 +101,7 @@ export function IndustriesSection({ onOpenQuoteModal }: IndustriesSectionProps) 
                   </h3>
                 </div>
 
-                <span className="w-8 h-8 rounded-full bg-brand-secondary/90 border border-brand-border flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan group-hover:text-[#071321] group-hover:border-brand-cyan transition-all duration-200 shrink-0">
+                <span className="w-8 h-8 rounded-full bg-white/90 border border-slate-200 flex items-center justify-center text-brand-cyan group-hover:bg-brand-cyan group-hover:text-white group-hover:border-brand-cyan transition-all duration-200 shrink-0 shadow-sm">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </div>
@@ -118,18 +118,18 @@ export function IndustriesSection({ onOpenQuoteModal }: IndustriesSectionProps) 
           aria-modal="true"
         >
           <div
-            className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity"
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity"
             onClick={() => setSelectedIndustry(null)}
           />
 
-          <div className="relative w-full max-w-lg bg-brand-secondary border border-brand-border rounded-2xl shadow-2xl overflow-hidden z-10 p-6 sm:p-8 space-y-5">
-            <div className="flex items-center justify-between pb-4 border-b border-brand-border">
+          <div className="relative w-full max-w-lg bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden z-10 p-6 sm:p-8 space-y-5 text-slate-900">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-brand-card border border-brand-border flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center">
                   {getIndustryIcon(selectedIndustry.id)}
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-brand-text">
+                  <h3 className="text-xl font-bold text-slate-900">
                     {selectedIndustry.title}
                   </h3>
                   <p className="text-xs text-brand-cyan font-mono">
@@ -140,33 +140,33 @@ export function IndustriesSection({ onOpenQuoteModal }: IndustriesSectionProps) 
               <button
                 type="button"
                 onClick={() => setSelectedIndustry(null)}
-                className="p-1.5 rounded-lg text-brand-muted hover:text-brand-text bg-brand-card border border-brand-border"
+                className="p-1.5 rounded-lg text-slate-500 hover:text-slate-900 bg-slate-100 border border-slate-200"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <p className="text-sm text-brand-muted leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               {selectedIndustry.description}
             </p>
 
-            <div className="p-4 rounded-xl bg-brand-card border border-brand-border space-y-2">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
               <h4 className="text-xs font-mono uppercase text-brand-cyan tracking-wider flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Uptime Criticality Factors</span>
               </h4>
-              <p className="text-xs sm:text-sm text-brand-text leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
                 {selectedIndustry.criticality}
               </p>
             </div>
 
             <div>
-              <h4 className="text-xs font-mono uppercase text-brand-muted tracking-wider mb-2">
+              <h4 className="text-xs font-mono uppercase text-slate-500 tracking-wider mb-2">
                 Recommended Infrastructure Stack:
               </h4>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-brand-text">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
                 {selectedIndustry.recommendedServices.map((svc, i) => (
-                  <li key={i} className="flex items-center gap-2 bg-brand-bg/60 p-2 rounded-lg border border-brand-border/40">
+                  <li key={i} className="flex items-center gap-2 bg-slate-50 p-2 rounded-lg border border-slate-100">
                     <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan" />
                     <span>{svc}</span>
                   </li>
@@ -174,11 +174,11 @@ export function IndustriesSection({ onOpenQuoteModal }: IndustriesSectionProps) 
               </ul>
             </div>
 
-            <div className="pt-4 flex items-center justify-end gap-3 border-t border-brand-border">
+            <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-200">
               <button
                 type="button"
                 onClick={() => setSelectedIndustry(null)}
-                className="px-4 py-2 rounded-full text-xs font-medium text-brand-muted hover:text-brand-text"
+                className="px-4 py-2 rounded-full text-xs font-medium text-slate-600 hover:text-slate-900"
               >
                 Close
               </button>
@@ -189,7 +189,7 @@ export function IndustriesSection({ onOpenQuoteModal }: IndustriesSectionProps) 
                   setSelectedIndustry(null);
                   onOpenQuoteModal(`Critical Power for ${title}`);
                 }}
-                className="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm"
+                className="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow-sm transition-all"
               >
                 Consult on {selectedIndustry.title}
               </button>

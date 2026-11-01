@@ -25,12 +25,12 @@ export function ProcessSection({ onOpenQuoteModal }: ProcessSectionProps) {
   };
 
   return (
-    <section id="how-we-work" className="py-24 bg-brand-secondary/40 relative overflow-hidden">
+    <section id="how-we-work" className="py-24 bg-slate-50/80 relative overflow-hidden border-y border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 text-brand-cyan text-xs font-semibold tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 text-brand-cyan text-xs font-semibold tracking-wider uppercase font-mono">
               <span className="text-brand-cyan text-sm">✛</span>
               <span>How We Work</span>
             </div>
@@ -54,37 +54,37 @@ export function ProcessSection({ onOpenQuoteModal }: ProcessSectionProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {PROCESS_STEPS.map((step, idx) => (
             <div key={idx} className="relative group">
-              <div className="h-full rounded-2xl bg-brand-card/80 border border-brand-border/80 p-6 flex flex-col justify-between hover:border-brand-cyan/60 hover:shadow-cyan-glow-sm transition-all duration-300">
+              <div className="h-full rounded-2xl bg-white border border-slate-200 p-6 flex flex-col justify-between hover:border-brand-cyan hover:shadow-md transition-all duration-300">
                 {/* Header row with step number and icon */}
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 rounded-xl bg-brand-secondary border border-brand-border flex items-center justify-center group-hover:border-brand-cyan/40 group-hover:scale-105 transition-all">
+                    <div className="w-11 h-11 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center group-hover:border-brand-cyan/40 group-hover:scale-105 transition-all">
                       {getStepIcon(step.icon)}
                     </div>
-                    <span className="font-mono text-sm font-bold text-brand-cyan bg-brand-cyan/10 px-2.5 py-1 rounded border border-brand-cyan/20">
+                    <span className="font-mono text-sm font-bold text-brand-cyan bg-sky-50 px-2.5 py-1 rounded border border-sky-200">
                       {step.number}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-brand-text mb-1 group-hover:text-brand-cyan transition-colors">
+                  <h3 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-brand-cyan transition-colors">
                     {step.title}
                   </h3>
                   <p className="text-xs text-brand-cyan font-mono mb-3">
                     {step.tagline}
                   </p>
-                  <p className="text-xs sm:text-sm text-brand-muted leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                     {step.description}
                   </p>
                 </div>
 
                 {/* Deliverables tags */}
-                <div className="pt-4 border-t border-brand-border/60 space-y-1.5">
-                  <span className="text-[10px] font-mono uppercase text-brand-muted tracking-wider block mb-1">
+                <div className="pt-4 border-t border-slate-100 space-y-1.5">
+                  <span className="text-[10px] font-mono uppercase text-slate-500 tracking-wider block mb-1">
                     Key Deliverables:
                   </span>
                   {step.deliverables.map((del, dIdx) => (
-                    <div key={dIdx} className="flex items-center gap-2 text-[11px] text-brand-text/90">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan/80 shrink-0" />
+                    <div key={dIdx} className="flex items-center gap-2 text-[11px] text-slate-700">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan shrink-0" />
                       <span className="truncate">{del}</span>
                     </div>
                   ))}
@@ -93,7 +93,7 @@ export function ProcessSection({ onOpenQuoteModal }: ProcessSectionProps) {
 
               {/* Connecting line / arrow on desktop */}
               {idx < PROCESS_STEPS.length - 1 && (
-                <div className="hidden lg:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-brand-secondary border border-brand-border text-brand-cyan items-center justify-center shadow-lg pointer-events-none">
+                <div className="hidden lg:flex absolute -right-3.5 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-white border border-slate-200 text-brand-cyan items-center justify-center shadow-md pointer-events-none">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               )}

@@ -54,8 +54,8 @@ export function Navbar({ onOpenQuoteModal }: NavbarProps) {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-[#071321]/90 backdrop-blur-md border-b border-[rgba(115,160,190,0.22)] py-3 shadow-lg'
-            : 'bg-[#071321]/70 backdrop-blur-sm border-b border-[rgba(115,160,190,0.12)] py-4'
+            ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/80 py-3 shadow-sm'
+            : 'bg-white/80 backdrop-blur-sm border-b border-slate-100 py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,7 +91,7 @@ export function Navbar({ onOpenQuoteModal }: NavbarProps) {
               <button
                 type="button"
                 onClick={() => onOpenQuoteModal()}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow-sm transition-all duration-200 active:scale-95"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow-sm transition-all duration-200 active:scale-95"
               >
                 <span>Get a Quote</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -103,7 +103,7 @@ export function Navbar({ onOpenQuoteModal }: NavbarProps) {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg text-brand-muted hover:text-brand-text hover:bg-brand-card focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
+                className="p-2 rounded-lg text-brand-muted hover:text-brand-text hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-cyan"
                 aria-expanded={mobileMenuOpen}
                 aria-label="Toggle mobile menu"
               >
@@ -123,18 +123,18 @@ export function Navbar({ onOpenQuoteModal }: NavbarProps) {
       >
         {/* Backdrop */}
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
           onClick={() => setMobileMenuOpen(false)}
         />
 
         {/* Drawer Panel */}
         <div
-          className={`fixed right-0 top-0 bottom-0 w-full max-w-sm bg-brand-secondary border-l border-brand-border p-6 shadow-2xl flex flex-col justify-between transform transition-transform duration-300 ease-in-out ${
+          className={`fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white border-l border-slate-200 p-6 shadow-2xl flex flex-col justify-between transform transition-transform duration-300 ease-in-out ${
             mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >
           <div>
-            <div className="flex items-center justify-between pb-6 border-b border-brand-border">
+            <div className="flex items-center justify-between pb-6 border-b border-slate-200">
               <Logo size="sm" showSubtitle={false} />
               <button
                 type="button"
@@ -152,7 +152,7 @@ export function Navbar({ onOpenQuoteModal }: NavbarProps) {
                   key={link.id}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 rounded-lg text-base font-medium text-brand-text hover:bg-brand-card hover:text-brand-cyan transition-colors"
+                  className="px-4 py-3 rounded-lg text-base font-medium text-brand-text hover:bg-slate-100 hover:text-brand-cyan transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -160,14 +160,14 @@ export function Navbar({ onOpenQuoteModal }: NavbarProps) {
             </nav>
           </div>
 
-          <div className="pt-6 border-t border-brand-border space-y-4">
+          <div className="pt-6 border-t border-slate-200 space-y-4">
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenQuoteModal();
               }}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold uppercase tracking-wider bg-brand-cyan text-[#071321] hover:bg-brand-cyan-hover shadow-cyan-glow transition-all"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold uppercase tracking-wider bg-brand-cyan text-white hover:bg-brand-cyan-hover shadow-cyan-glow transition-all"
             >
               <span>Get a Quote</span>
               <ArrowRight className="w-4 h-4" />
