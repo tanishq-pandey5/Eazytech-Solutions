@@ -4,8 +4,44 @@ import { COMPANY_DETAILS } from '@/data/companyData';
 
 interface EmailResult {
   success: boolean;
-  mode: 'smtp' | 'local_outbox' | 'disabled';
+  mode: 'smtp' | 'resend' | 'local_outbox' | 'disabled';
   error?: string;
+}
+
+/**
+ * Send an email via Resend API (HTTP REST).
+ */
+async function sendViaResend(options: {
+  to: string | string[];
+  replyTo?: string;
+  subject: string;
+  html: string;
+}): Promise<boolean> {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return false;
+
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: process.env.RESEND_FROM || `${COMPANY_DETAILS.name} <onboarding@resend.dev>`,
+      to: Array.isArray(options.to) ? options.to : [options.to],
+      reply_to: options.replyTo,
+      subject: options.subject,
+      html: options.html,
+    }),
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    console.error('[Resend Error]', res.status, errText);
+    throw new Error(`Resend error: ${errText}`);
+  }
+
+  return true;
 }
 
 /**
@@ -52,7 +88,6 @@ function getTransporter() {
  * Send quotation / technical consultation enquiry notification to company and acknowledgment to client.
  */
 export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailResult> {
-  const transporter = getTransporter();
   const recipientEmail = process.env.NOTIFICATION_EMAIL || COMPANY_DETAILS.contactEmail || 'eazytechsolutions@hotmail.com';
   const senderEmail = process.env.SMTP_FROM || process.env.SMTP_USER || 'no-reply@eazytechsolutions.com';
 
@@ -176,9 +211,39 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
     </div>
   `;
 
+  // 1. Try Resend API first if configured
+  if (process.env.RESEND_API_KEY) {
+    try {
+      await sendViaResend({
+        to: recipientEmail,
+        replyTo: enquiry.businessEmail,
+        subject: `[New Inquiry ${enquiry.id}] ${enquiry.serviceRequired} — ${enquiry.fullName}`,
+        html: teamEmailHtml,
+      });
+
+      // Best effort client acknowledgment
+      try {
+        await sendViaResend({
+          to: enquiry.businessEmail,
+          replyTo: recipientEmail,
+          subject: `Inquiry Received: ${enquiry.serviceRequired} [Ref: ${enquiry.id}]`,
+          html: clientAcknowledgmentHtml,
+        });
+      } catch (ackErr) {
+        console.warn('[Resend] Client acknowledgment skipped:', ackErr);
+      }
+
+      console.log(`[Email Dispatch] Successfully sent inquiry alert ${enquiry.id} via Resend to ${recipientEmail}`);
+      return { success: true, mode: 'resend' };
+    } catch (resendError: any) {
+      console.error('[Email Dispatch] Resend failed, falling back to SMTP:', resendError);
+    }
+  }
+
+  // 2. Try Nodemailer SMTP if configured
+  const transporter = getTransporter();
   if (transporter) {
     try {
-      // 1. Send lead alert to company inbox
       await transporter.sendMail({
         from: `"${COMPANY_DETAILS.name} Website" <${senderEmail}>`,
         to: recipientEmail,
@@ -187,9 +252,6 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
         html: teamEmailHtml,
       });
 
-      console.log(`[Email Dispatch] Successfully sent inquiry alert ${enquiry.id} to ${recipientEmail}`);
-
-      // 2. Send acknowledgment to client (best effort)
       try {
         await transporter.sendMail({
           from: `"${COMPANY_DETAILS.name}" <${senderEmail}>`,
@@ -198,11 +260,11 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
           subject: `Inquiry Received: ${enquiry.serviceRequired} [Ref: ${enquiry.id}]`,
           html: clientAcknowledgmentHtml,
         });
-        console.log(`[Email Dispatch] Sent acknowledgment receipt to client ${enquiry.businessEmail}`);
       } catch (ackError) {
         console.warn(`[Email Dispatch] Client acknowledgment receipt skipped:`, ackError);
       }
 
+      console.log(`[Email Dispatch] Successfully sent inquiry alert ${enquiry.id} via SMTP to ${recipientEmail}`);
       return { success: true, mode: 'smtp' };
     } catch (error: any) {
       console.error('[Email Dispatch] SMTP error sending enquiry emails:', error);
@@ -210,8 +272,8 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
     }
   }
 
-  // Fallback: If no SMTP credentials configured, log simulation
-  console.log(`[Email Dispatch Notice] No SMTP credentials provided. Enquiry ${enquiry.id} logged locally.`);
+  // Fallback: If neither configured, log simulation
+  console.log(`[Email Dispatch Notice] No SMTP or Resend credentials provided. Enquiry ${enquiry.id} logged.`);
   return { success: true, mode: 'local_outbox' };
 }
 
@@ -223,7 +285,6 @@ export async function sendResourceNotificationEmail(params: {
   businessEmail: string;
   fullName?: string;
 }): Promise<EmailResult> {
-  const transporter = getTransporter();
   const recipientEmail = process.env.NOTIFICATION_EMAIL || COMPANY_DETAILS.contactEmail || 'eazytechsolutions@hotmail.com';
   const senderEmail = process.env.SMTP_FROM || process.env.SMTP_USER || 'no-reply@eazytechsolutions.com';
 
@@ -254,6 +315,22 @@ export async function sendResourceNotificationEmail(params: {
     </div>
   `;
 
+  if (process.env.RESEND_API_KEY) {
+    try {
+      await sendViaResend({
+        to: recipientEmail,
+        replyTo: params.businessEmail,
+        subject: `[Resource Lead] ${params.resourceTitle} — ${params.fullName || params.businessEmail}`,
+        html,
+      });
+      console.log(`[Email Dispatch] Sent resource notification for "${params.resourceTitle}" via Resend to ${recipientEmail}`);
+      return { success: true, mode: 'resend' };
+    } catch (err: any) {
+      console.warn('[Resend] Resource lead email failed:', err);
+    }
+  }
+
+  const transporter = getTransporter();
   if (transporter) {
     try {
       await transporter.sendMail({
