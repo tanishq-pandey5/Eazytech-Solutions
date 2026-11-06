@@ -88,7 +88,7 @@ function getTransporter() {
  * Send quotation / technical consultation enquiry notification to company and acknowledgment to client.
  */
 export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailResult> {
-  const recipientEmail = process.env.NOTIFICATION_EMAIL || COMPANY_DETAILS.contactEmail || 'eazytechsolutions@hotmail.com';
+  const recipientEmail = process.env.NOTIFICATION_EMAIL || `${COMPANY_DETAILS.contactEmail}, eazytechsolutions@hotmail.com`;
   const senderEmail = process.env.SMTP_FROM || process.env.SMTP_USER || 'no-reply@eazytechsolutions.com';
 
   const teamEmailHtml = `
@@ -285,7 +285,7 @@ export async function sendResourceNotificationEmail(params: {
   businessEmail: string;
   fullName?: string;
 }): Promise<EmailResult> {
-  const recipientEmail = process.env.NOTIFICATION_EMAIL || COMPANY_DETAILS.contactEmail || 'eazytechsolutions@hotmail.com';
+  const recipientEmail = process.env.NOTIFICATION_EMAIL || `${COMPANY_DETAILS.contactEmail}, eazytechsolutions@hotmail.com`;
   const senderEmail = process.env.SMTP_FROM || process.env.SMTP_USER || 'no-reply@eazytechsolutions.com';
 
   const html = `
