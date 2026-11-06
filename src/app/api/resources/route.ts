@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createResourceRequest } from '@/lib/db';
+import { sendResourceNotificationEmail } from '@/lib/email';
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,6 +20,13 @@ export async function POST(req: NextRequest) {
       businessEmail,
       fullName,
     });
+
+    // Send email alert to company inbox (non-blocking for visitor download UX)
+    sendResourceNotificationEmail({
+      resourceTitle,
+      businessEmail,
+      fullName,
+    }).catch((err) => console.error('Background resource notification error:', err));
 
     return NextResponse.json({
       success: true,

@@ -101,13 +101,11 @@ export async function POST(req: NextRequest) {
       sourceIp: ip,
     });
 
-    // Send emails / write outbox
+    // Send email alert to company and acknowledgment to client
     const emailRes = await sendEnquiryEmails(newEnquiry);
-    if (emailRes.success) {
-      await updateEnquiry(newEnquiry.id, {
-        emailStatus: emailRes.mode === 'smtp' ? 'SENT' : 'QUEUED_LOCAL',
-      });
-    }
+    await updateEnquiry(newEnquiry.id, {
+      emailStatus: emailRes.success ? (emailRes.mode === 'smtp' ? 'SENT' : 'QUEUED_LOCAL') : 'FAILED',
+    });
 
     return NextResponse.json(
       {
