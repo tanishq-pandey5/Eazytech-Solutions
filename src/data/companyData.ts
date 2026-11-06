@@ -45,7 +45,7 @@ export const COMPANY_DETAILS = {
     "Your trusted partner for reliable power solutions, delivering UPS systems, battery solutions, power audits, maintenance, testing, and technical consultancy to keep your operations running without interruption.",
   gstin: "09FALPP6353P1ZN",
   stateJurisdiction: "Uttar Pradesh (09)",
-  contactEmail: "eazytechsolution@hotmail.com",
+  contactEmail: "eazytechsolutions@hotmail.com",
   contactPhone: "+91 74289 77714",
   formattedPhone: "+91 74289 77714",
   phoneRaw: "+917428977714",

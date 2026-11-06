@@ -16,6 +16,7 @@ async function sendViaResend(options: {
   replyTo?: string;
   subject: string;
   html: string;
+  text?: string;
 }): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return false;
@@ -32,6 +33,7 @@ async function sendViaResend(options: {
       reply_to: options.replyTo,
       subject: options.subject,
       html: options.html,
+      text: options.text,
     }),
   });
 
@@ -88,8 +90,33 @@ function getTransporter() {
  * Send quotation / technical consultation enquiry notification to company and acknowledgment to client.
  */
 export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailResult> {
-  const recipientEmail = process.env.NOTIFICATION_EMAIL || `${COMPANY_DETAILS.contactEmail}, eazytechsolutions@hotmail.com`;
-  const senderEmail = process.env.SMTP_FROM || process.env.SMTP_USER || 'no-reply@eazytechsolutions.com';
+  const recipientEmail = process.env.NOTIFICATION_EMAIL || 'eazytechsolutions@hotmail.com, pandeytanish53@gmail.com';
+  const senderEmail = process.env.SMTP_FROM || process.env.SMTP_USER || 'pandeytanish53@gmail.com';
+
+  const teamEmailText = `
+New Critical Power Inquiry
+Reference ID: ${enquiry.id}
+Time: ${new Date(enquiry.createdAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST
+
+Client Details:
+- Name: ${enquiry.fullName}
+- Business Email: ${enquiry.businessEmail}
+- Phone: ${enquiry.phoneNumber || 'Not provided'}
+- Company: ${enquiry.companyName || 'Not specified'}
+
+Requirements:
+- Service Required: ${enquiry.serviceRequired}
+- Site Location: ${enquiry.siteLocation || 'Not specified'}
+- Equipment Model / Capacity: ${enquiry.equipmentModel || 'Not specified'}
+
+Requirement Details:
+${enquiry.requirementDescription}
+
+---
+Eazy Tech Solutions • Critical Power Infrastructure
+${COMPANY_DETAILS.registeredOffice.fullAddress}
+Phone: ${COMPANY_DETAILS.contactPhone}
+  `.trim();
 
   const teamEmailHtml = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #F8FAFC; padding: 32px 16px; color: #0F172A;">
@@ -167,6 +194,27 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
     </div>
   `;
 
+  const clientAcknowledgmentText = `
+Dear ${enquiry.fullName},
+
+Thank you for contacting Eazy Tech Solutions regarding ${enquiry.serviceRequired}. Our critical power engineering team has received your technical requirement (Reference ID: ${enquiry.id}) and is reviewing your specifications.
+
+A senior solutions engineer will contact you shortly.
+
+Summary of Your Submission:
+- Service / Product: ${enquiry.serviceRequired}
+${enquiry.equipmentModel ? `- Equipment / Capacity: ${enquiry.equipmentModel}` : ''}
+${enquiry.siteLocation ? `- Location: ${enquiry.siteLocation}` : ''}
+
+For urgent breakdown response or 24/7 technical dispatch:
+Phone: ${COMPANY_DETAILS.contactPhone}
+Email: ${COMPANY_DETAILS.contactEmail}
+
+Best regards,
+Eazy Tech Solutions Team
+${COMPANY_DETAILS.registeredOffice.fullAddress}
+  `.trim();
+
   const clientAcknowledgmentHtml = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #F8FAFC; padding: 32px 16px; color: #0F172A;">
       <div style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
@@ -219,6 +267,7 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
         replyTo: enquiry.businessEmail,
         subject: `[New Inquiry ${enquiry.id}] ${enquiry.serviceRequired} — ${enquiry.fullName}`,
         html: teamEmailHtml,
+        text: teamEmailText,
       });
 
       // Best effort client acknowledgment
@@ -228,6 +277,7 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
           replyTo: recipientEmail,
           subject: `Inquiry Received: ${enquiry.serviceRequired} [Ref: ${enquiry.id}]`,
           html: clientAcknowledgmentHtml,
+          text: clientAcknowledgmentText,
         });
       } catch (ackErr) {
         console.warn('[Resend] Client acknowledgment skipped:', ackErr);
@@ -245,10 +295,11 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
   if (transporter) {
     try {
       await transporter.sendMail({
-        from: `"${COMPANY_DETAILS.name} Website" <${senderEmail}>`,
+        from: `"${COMPANY_DETAILS.name}" <${senderEmail}>`,
         to: recipientEmail,
         replyTo: enquiry.businessEmail,
         subject: `[New Inquiry ${enquiry.id}] ${enquiry.serviceRequired} — ${enquiry.fullName}`,
+        text: teamEmailText,
         html: teamEmailHtml,
       });
 
@@ -258,6 +309,7 @@ export async function sendEnquiryEmails(enquiry: EnquiryRecord): Promise<EmailRe
           to: enquiry.businessEmail,
           replyTo: recipientEmail,
           subject: `Inquiry Received: ${enquiry.serviceRequired} [Ref: ${enquiry.id}]`,
+          text: clientAcknowledgmentText,
           html: clientAcknowledgmentHtml,
         });
       } catch (ackError) {
@@ -285,8 +337,16 @@ export async function sendResourceNotificationEmail(params: {
   businessEmail: string;
   fullName?: string;
 }): Promise<EmailResult> {
-  const recipientEmail = process.env.NOTIFICATION_EMAIL || `${COMPANY_DETAILS.contactEmail}, eazytechsolutions@hotmail.com`;
-  const senderEmail = process.env.SMTP_FROM || process.env.SMTP_USER || 'no-reply@eazytechsolutions.com';
+  const recipientEmail = process.env.NOTIFICATION_EMAIL || 'eazytechsolutions@hotmail.com, pandeytanish53@gmail.com';
+  const senderEmail = process.env.SMTP_FROM || process.env.SMTP_USER || 'pandeytanish53@gmail.com';
+
+  const text = `
+Technical Resource Downloaded
+Resource: ${params.resourceTitle}
+Visitor Email: ${params.businessEmail}
+Visitor Name: ${params.fullName || 'Not provided'}
+Timestamp: ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST
+  `.trim();
 
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #F8FAFC; padding: 24px 16px; color: #0F172A;">
@@ -322,6 +382,7 @@ export async function sendResourceNotificationEmail(params: {
         replyTo: params.businessEmail,
         subject: `[Resource Lead] ${params.resourceTitle} — ${params.fullName || params.businessEmail}`,
         html,
+        text,
       });
       console.log(`[Email Dispatch] Sent resource notification for "${params.resourceTitle}" via Resend to ${recipientEmail}`);
       return { success: true, mode: 'resend' };
@@ -334,10 +395,11 @@ export async function sendResourceNotificationEmail(params: {
   if (transporter) {
     try {
       await transporter.sendMail({
-        from: `"${COMPANY_DETAILS.name} Portal" <${senderEmail}>`,
+        from: `"${COMPANY_DETAILS.name}" <${senderEmail}>`,
         to: recipientEmail,
         replyTo: params.businessEmail,
         subject: `[Resource Lead] ${params.resourceTitle} — ${params.fullName || params.businessEmail}`,
+        text,
         html,
       });
       console.log(`[Email Dispatch] Sent resource notification for "${params.resourceTitle}" to ${recipientEmail}`);
