@@ -41,8 +41,10 @@ interface DatabaseSchema {
   };
 }
 
-const DB_DIR = path.join(process.cwd(), 'data');
-const DB_FILE = path.join(DB_DIR, 'db.json');
+// On Vercel / AWS Lambda, use /tmp which is the only writable directory.
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+const LOCAL_DB_FILE = path.join(process.cwd(), 'data', 'db.json');
+const TMP_DB_FILE = path.join('/tmp', 'eazytech_db.json');
 
 const INITIAL_DB: DatabaseSchema = {
   enquiries: [
@@ -106,45 +108,69 @@ const INITIAL_DB: DatabaseSchema = {
   },
 };
 
-/**
- * Ensure database file and directory exist.
- */
-async function ensureDb(): Promise<void> {
-  try {
-    await fs.mkdir(DB_DIR, { recursive: true });
-    try {
-      await fs.access(DB_FILE);
-    } catch {
-      await fs.writeFile(DB_FILE, JSON.stringify(INITIAL_DB, null, 2), 'utf-8');
-    }
-  } catch (error) {
-    console.error('Failed to ensure database file:', error);
-  }
+// In-memory store ensuring zero crash risk even on strictly read-only serverless runtimes
+let memoryDb: DatabaseSchema = JSON.parse(JSON.stringify(INITIAL_DB));
+let isInitialized = false;
+
+function getStoragePath(): string {
+  return isServerless ? TMP_DB_FILE : LOCAL_DB_FILE;
 }
 
 /**
- * Read full database.
+ * Initialize and read database safely.
  */
 export async function readDb(): Promise<DatabaseSchema> {
-  await ensureDb();
-  try {
-    const raw = await fs.readFile(DB_FILE, 'utf-8');
-    return JSON.parse(raw) as DatabaseSchema;
-  } catch (error) {
-    console.error('Error reading db.json, returning initial fallback:', error);
-    return INITIAL_DB;
+  if (isInitialized) {
+    return memoryDb;
   }
+
+  // 1. Try reading from /tmp if on serverless
+  if (isServerless) {
+    try {
+      const tmpRaw = await fs.readFile(TMP_DB_FILE, 'utf-8');
+      memoryDb = JSON.parse(tmpRaw);
+      isInitialized = true;
+      return memoryDb;
+    } catch {
+      // not yet written to /tmp
+    }
+  }
+
+  // 2. Try reading bundled seed data from data/db.json
+  try {
+    const raw = await fs.readFile(LOCAL_DB_FILE, 'utf-8');
+    memoryDb = JSON.parse(raw);
+    isInitialized = true;
+    return memoryDb;
+  } catch {
+    // fallback to initial
+  }
+
+  isInitialized = true;
+  return memoryDb;
 }
 
 /**
- * Write database atomically via a temporary file.
+ * Write database safely to memory and persistent disk without crashing.
  */
 export async function writeDb(data: DatabaseSchema): Promise<void> {
-  await ensureDb();
+  memoryDb = data;
   data.settings.lastUpdated = new Date().toISOString();
-  const tmpFile = `${DB_FILE}.${Date.now()}.tmp`;
-  await fs.writeFile(tmpFile, JSON.stringify(data, null, 2), 'utf-8');
-  await fs.rename(tmpFile, DB_FILE);
+
+  const targetPath = getStoragePath();
+  try {
+    await fs.mkdir(path.dirname(targetPath), { recursive: true });
+    const tmpFile = `${targetPath}.${Date.now()}.tmp`;
+    await fs.writeFile(tmpFile, JSON.stringify(data, null, 2), 'utf-8');
+    await fs.rename(tmpFile, targetPath);
+  } catch (error) {
+    // If local write fails (e.g. EROFS), fallback to /tmp
+    try {
+      await fs.writeFile(TMP_DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    } catch {
+      // Retain in memory safely
+    }
+  }
 }
 
 /**
@@ -190,7 +216,7 @@ export async function getEnquiryById(id: string): Promise<EnquiryRecord | null> 
 }
 
 /**
- * Create a new enquiry record.
+ * Create a new enquiry record safely.
  */
 export async function createEnquiry(
   input: Omit<EnquiryRecord, 'id' | 'createdAt' | 'updatedAt' | 'status' | 'notes' | 'emailStatus'>
@@ -211,12 +237,16 @@ export async function createEnquiry(
   };
 
   db.enquiries.unshift(newRecord);
-  await writeDb(db);
+  try {
+    await writeDb(db);
+  } catch (err) {
+    console.warn('[DB Persistence Warning] writeDb skipped:', err);
+  }
   return newRecord;
 }
 
 /**
- * Update enquiry status or append notes.
+ * Update enquiry status or append notes safely.
  */
 export async function updateEnquiry(
   id: string,
@@ -247,12 +277,16 @@ export async function updateEnquiry(
   current.updatedAt = new Date().toISOString();
 
   db.enquiries[idx] = current;
-  await writeDb(db);
+  try {
+    await writeDb(db);
+  } catch (err) {
+    console.warn('[DB Persistence Warning] writeDb skipped:', err);
+  }
   return current;
 }
 
 /**
- * Log a technical whitepaper / resource request.
+ * Log a technical whitepaper / resource request safely.
  */
 export async function createResourceRequest(data: {
   resourceTitle: string;
@@ -269,6 +303,10 @@ export async function createResourceRequest(data: {
   };
 
   db.resourceRequests.unshift(record);
-  await writeDb(db);
+  try {
+    await writeDb(db);
+  } catch (err) {
+    console.warn('[DB Persistence Warning] writeDb skipped:', err);
+  }
   return record;
 }
